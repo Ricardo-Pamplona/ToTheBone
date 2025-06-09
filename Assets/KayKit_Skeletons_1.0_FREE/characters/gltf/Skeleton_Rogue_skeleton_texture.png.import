@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dm1nhk78r2vly"
-path.s3tc="res://.godot/imported/Skeleton_Rogue_skeleton_texture.png-b983ddeb95699e5e3b9f396d802ea031.s3tc.ctex"
+uid="uid://dpox2b0ro14yg"
+path.s3tc="res://.godot/imported/Skeleton_Rogue_skeleton_texture.png-efdb1af811595e329bc5a1204b831c9d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "661544b1e8ba10b5a0c98b638eae6d0b"
-}
 
 [deps]
 
-source_file="res://Assets/KayKit_Skeletons_1.0_FREE/characters/gltf/Skeleton_Rogue_skeleton_texture.png"
-dest_files=["res://.godot/imported/Skeleton_Rogue_skeleton_texture.png-b983ddeb95699e5e3b9f396d802ea031.s3tc.ctex"]
+source_file="res://assets/KayKit_Skeletons_1.0_FREE/characters/gltf/Skeleton_Rogue_skeleton_texture.png"
+dest_files=["res://.godot/imported/Skeleton_Rogue_skeleton_texture.png-efdb1af811595e329bc5a1204b831c9d.s3tc.ctex"]
 
 [params]
 

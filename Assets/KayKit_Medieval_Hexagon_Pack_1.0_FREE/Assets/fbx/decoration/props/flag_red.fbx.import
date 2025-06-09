@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cxglbnkxh4ecc"
-path="res://.godot/imported/flag_red.fbx-fe2925d8aea08d4dda2cd4ede3bb02d9.scn"
+path="res://.godot/imported/flag_red.fbx-256c2114f1e087719b1222ca5042c5fe.scn"
 
 [deps]
 
-source_file="res://Assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/decoration/props/flag_red.fbx"
-dest_files=["res://.godot/imported/flag_red.fbx-fe2925d8aea08d4dda2cd4ede3bb02d9.scn"]
+source_file="res://assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/decoration/props/flag_red.fbx"
+dest_files=["res://.godot/imported/flag_red.fbx-256c2114f1e087719b1222ca5042c5fe.scn"]
 
 [params]
 

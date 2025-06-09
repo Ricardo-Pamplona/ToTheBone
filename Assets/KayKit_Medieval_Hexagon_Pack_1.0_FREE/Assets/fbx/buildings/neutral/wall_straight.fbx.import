@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bwsxyn8gomrpp"
-path="res://.godot/imported/wall_straight.fbx-5f259676178488d5691ee8ff85e4f6e2.scn"
+path="res://.godot/imported/wall_straight.fbx-bcd21d1c51c2d9629d8f0204856b7d23.scn"
 
 [deps]
 
-source_file="res://Assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/buildings/neutral/wall_straight.fbx"
-dest_files=["res://.godot/imported/wall_straight.fbx-5f259676178488d5691ee8ff85e4f6e2.scn"]
+source_file="res://assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/buildings/neutral/wall_straight.fbx"
+dest_files=["res://.godot/imported/wall_straight.fbx-bcd21d1c51c2d9629d8f0204856b7d23.scn"]
 
 [params]
 

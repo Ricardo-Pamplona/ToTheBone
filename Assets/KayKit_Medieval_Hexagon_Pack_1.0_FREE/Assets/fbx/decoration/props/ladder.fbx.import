@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://6lifmc2ysl8c"
-path="res://.godot/imported/ladder.fbx-9496a9e1baf3972a8fbe613e6b929d70.scn"
+path="res://.godot/imported/ladder.fbx-dd54630df77337ed52a11473f368b406.scn"
 
 [deps]
 
-source_file="res://Assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/decoration/props/ladder.fbx"
-dest_files=["res://.godot/imported/ladder.fbx-9496a9e1baf3972a8fbe613e6b929d70.scn"]
+source_file="res://assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/decoration/props/ladder.fbx"
+dest_files=["res://.godot/imported/ladder.fbx-dd54630df77337ed52a11473f368b406.scn"]
 
 [params]
 

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ccdwxkv5dctw6"
-path.s3tc="res://.godot/imported/Skeleton_Warrior_skeleton_texture.png-dee99155804dbd4893c9f9ecb04b78aa.s3tc.ctex"
+path.s3tc="res://.godot/imported/Skeleton_Warrior_skeleton_texture.png-8059cff23423594f35d41f47e5bfee4f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Assets/KayKit_Skeletons_1.0_FREE/characters/gltf/Skeleton_Warrior_skeleton_texture.png"
-dest_files=["res://.godot/imported/Skeleton_Warrior_skeleton_texture.png-dee99155804dbd4893c9f9ecb04b78aa.s3tc.ctex"]
+source_file="res://assets/KayKit_Skeletons_1.0_FREE/characters/gltf/Skeleton_Warrior_skeleton_texture.png"
+dest_files=["res://.godot/imported/Skeleton_Warrior_skeleton_texture.png-8059cff23423594f35d41f47e5bfee4f.s3tc.ctex"]
 
 [params]
 

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://h6fhmh0alqc6"
-path="res://.godot/imported/building_mine_blue.fbx-89a3f1e3c46b9c0c301e4938234a341f.scn"
+path="res://.godot/imported/building_mine_blue.fbx-cef3aeb255c5d9abc9a05679f23ce651.scn"
 
 [deps]
 
-source_file="res://Assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/buildings/blue/building_mine_blue.fbx"
-dest_files=["res://.godot/imported/building_mine_blue.fbx-89a3f1e3c46b9c0c301e4938234a341f.scn"]
+source_file="res://assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/buildings/blue/building_mine_blue.fbx"
+dest_files=["res://.godot/imported/building_mine_blue.fbx-cef3aeb255c5d9abc9a05679f23ce651.scn"]
 
 [params]
 
