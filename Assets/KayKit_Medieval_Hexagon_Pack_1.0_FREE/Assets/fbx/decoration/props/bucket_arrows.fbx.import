@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://b8rwhu5o2tbqn"
-path="res://.godot/imported/bucket_arrows.fbx-a0485f47938a31249143225f2e35395c.scn"
+path="res://.godot/imported/bucket_arrows.fbx-0e77f049f471f4eecb60e02a10925ffc.scn"
 
 [deps]
 
-source_file="res://assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/decoration/props/bucket_arrows.fbx"
-dest_files=["res://.godot/imported/bucket_arrows.fbx-a0485f47938a31249143225f2e35395c.scn"]
+source_file="res://Assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/decoration/props/bucket_arrows.fbx"
+dest_files=["res://.godot/imported/bucket_arrows.fbx-0e77f049f471f4eecb60e02a10925ffc.scn"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dq6nxpq73a4"]
 
 [ext_resource type="Script" uid="uid://tdridcfyhy6m" path="res://scripts/hex_grid.gd" id="1_bw3vb"]
-[ext_resource type="Script" uid="uid://3wui6a0xrky1" path="res://scripts/camera_position.gd" id="1_tx6nw"]
+[ext_resource type="Script" uid="uid://3wui6a0xrky1" path="res://Assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/tiles/rivers/camera_position.gd" id="1_tx6nw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_id3w2"]
 sky_top_color = Color(0.486275, 0.72549, 0.952941, 1)
@@ -29,9 +29,10 @@ script = ExtResource("1_tx6nw")
 [node name="CameraRotation" type="Node3D" parent="CameraPosition"]
 
 [node name="CameraZoom" type="Node3D" parent="CameraPosition/CameraRotation"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CameraPosition/CameraRotation/CameraZoom"]
-transform = Transform3D(1, 0, 0, 0, 0.642788, 0.766044, 0, -0.766044, 0.642788, 0, 30, 20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
 
 [node name="HexGrid" type="Node3D" parent="."]
 script = ExtResource("1_bw3vb")

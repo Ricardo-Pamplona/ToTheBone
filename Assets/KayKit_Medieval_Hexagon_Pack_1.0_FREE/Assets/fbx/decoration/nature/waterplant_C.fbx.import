@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://ro0ad5q7vnm"
-path="res://.godot/imported/waterplant_C.fbx-09cc3b74ac73bb171d316e0fbaf2854b.scn"
+path="res://.godot/imported/waterplant_C.fbx-065db3722c90aaa98a7a38c9afebc408.scn"
 
 [deps]
 
-source_file="res://assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/decoration/nature/waterplant_C.fbx"
-dest_files=["res://.godot/imported/waterplant_C.fbx-09cc3b74ac73bb171d316e0fbaf2854b.scn"]
+source_file="res://Assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/decoration/nature/waterplant_C.fbx"
+dest_files=["res://.godot/imported/waterplant_C.fbx-065db3722c90aaa98a7a38c9afebc408.scn"]
 
 [params]
 

@@ -1,11 +1,11 @@
 extends Node3D
 
 
-const TILE_SIZE := 1.0
+const TILE_SIZE := 2.0
 const HEX_TILE = preload("res://scenes/hex_tile.tscn")
 
-@export var grid_size := 10
-
+@export var grid_size := 100
+var index = 0 
 
 func _ready() -> void:
 	_generate_grid()
@@ -20,5 +20,6 @@ func _generate_grid():
 		for y in range(grid_size):
 			var tile = HEX_TILE.instantiate()
 			add_child(tile)
-			tile.translate(Vector3(tile_coordinates.x, 0, tile_coordinates.y))
+			tile.translate(Vector3(tile_coordinates.x, index, tile_coordinates.y))
 			tile_coordinates.y += TILE_SIZE
+			
