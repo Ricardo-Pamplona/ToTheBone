@@ -4,11 +4,11 @@ extends Node3D
 @onready var zoom = $CameraRotation/CameraZoom
 @onready var camera = $CameraRotation/CameraZoom/Camera3D
 
-var move_speed : float = 0.6
+var move_speed : float = 0.3
 var move_target : Vector3
-var rotate_speed : float = 1.5
+var rotate_speed : float = 1.2
 var rotate_target: float
-var zoom_speed : float = 3.0
+var zoom_speed : float = 1.0
 var zoom_target : float
 var min_zoom : float = -20.0
 var max_zoom : float = 20.0
