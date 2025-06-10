@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dmhsnsxt0lr3a"
-path="res://.godot/imported/hills_A.fbx-b731f4395562be313aa3f1d31562fb38.scn"
+path="res://.godot/imported/hills_A.fbx-451b158de237a109450b5b820471c8fd.scn"
 
 [deps]
 
-source_file="res://Assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/decoration/nature/hills_A.fbx"
-dest_files=["res://.godot/imported/hills_A.fbx-b731f4395562be313aa3f1d31562fb38.scn"]
+source_file="res://assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/decoration/nature/hills_A.fbx"
+dest_files=["res://.godot/imported/hills_A.fbx-451b158de237a109450b5b820471c8fd.scn"]
 
 [params]
 

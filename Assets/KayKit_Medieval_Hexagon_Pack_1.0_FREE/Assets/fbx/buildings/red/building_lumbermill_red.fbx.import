@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://ij0tbt87esic"
-path="res://.godot/imported/building_lumbermill_red.fbx-2c34556a6644095e028b321880a3d09f.scn"
+path="res://.godot/imported/building_lumbermill_red.fbx-7575340baef68860dfb94a030a4f62e6.scn"
 
 [deps]
 
-source_file="res://Assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/buildings/red/building_lumbermill_red.fbx"
-dest_files=["res://.godot/imported/building_lumbermill_red.fbx-2c34556a6644095e028b321880a3d09f.scn"]
+source_file="res://assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/buildings/red/building_lumbermill_red.fbx"
+dest_files=["res://.godot/imported/building_lumbermill_red.fbx-7575340baef68860dfb94a030a4f62e6.scn"]
 
 [params]
 

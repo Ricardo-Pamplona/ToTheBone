@@ -23,10 +23,10 @@ func _ready() -> void:
 	camera.look_at(position)
 	
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion and Input.is_action_just_pressed("rotate_mouse"):
+	if event is InputEventMouseMotion and Input.is_action_pressed("rotate_mouse"):
 		rotate_target -= event.relative.x * mouse_sens
 		roation_x.rotation_degrees.x -= event.relative.x * mouse_sens
-		roation_x.rotation_degrees.x = clamp(roation_x.rota.x, -10, 30)
+		roation_x.rotation_degrees.x = clamp(roation_x.rotation_degrees.x, -10, 30)
 		
 func _process(delta: float) -> void:
 	var input_dir = Input.get_vector("left","right","up","down")

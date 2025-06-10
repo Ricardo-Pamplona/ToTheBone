@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://byb8jlirl0gp1"
-path="res://.godot/imported/Skeleton_Minion.fbx-d5049b4a6c0c1c263fbc3a697ae1a6e6.scn"
+path="res://.godot/imported/Skeleton_Minion.fbx-9b07a6bc2775534c6501c6df711d5ff3.scn"
 
 [deps]
 
-source_file="res://Assets/KayKit_Skeletons_1.0_FREE/characters/fbx/Skeleton_Minion.fbx"
-dest_files=["res://.godot/imported/Skeleton_Minion.fbx-d5049b4a6c0c1c263fbc3a697ae1a6e6.scn"]
+source_file="res://assets/KayKit_Skeletons_1.0_FREE/characters/fbx/Skeleton_Minion.fbx"
+dest_files=["res://.godot/imported/Skeleton_Minion.fbx-9b07a6bc2775534c6501c6df711d5ff3.scn"]
 
 [params]
 

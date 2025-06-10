@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bcyylkuuijt68"
-path="res://.godot/imported/axe_1handed.fbx-3f1f8537e4826a49d0fe51b6007ef55e.scn"
+path="res://.godot/imported/axe_1handed.fbx-eae834b04d0fa158d6350c0e063ff0e0.scn"
 
 [deps]
 
-source_file="res://Assets/KayKit_Adventurers_1.0_FREE/Assets/fbx/axe_1handed.fbx"
-dest_files=["res://.godot/imported/axe_1handed.fbx-3f1f8537e4826a49d0fe51b6007ef55e.scn"]
+source_file="res://assets/KayKit_Adventurers_1.0_FREE/Assets/fbx/axe_1handed.fbx"
+dest_files=["res://.godot/imported/axe_1handed.fbx-eae834b04d0fa158d6350c0e063ff0e0.scn"]
 
 [params]
 
