@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://caayodmol6mib"
-path="res://.godot/imported/tent.fbx-cf0a502a247265e158293d972e620cd5.scn"
+path="res://.godot/imported/tent.fbx-69949023265fac66add68b44a2520421.scn"
 
 [deps]
 
-source_file="res://assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/decoration/props/tent.fbx"
-dest_files=["res://.godot/imported/tent.fbx-cf0a502a247265e158293d972e620cd5.scn"]
+source_file="res://Assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/decoration/props/tent.fbx"
+dest_files=["res://.godot/imported/tent.fbx-69949023265fac66add68b44a2520421.scn"]
 
 [params]
 

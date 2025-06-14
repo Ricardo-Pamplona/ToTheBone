@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://04r0guv3ibwb"
-path="res://.godot/imported/trees_A_small.fbx-9ec524252d95f3971dacb8f2e9b5a14a.scn"
+path="res://.godot/imported/trees_A_small.fbx-b171ea7fa2ec9168dc6e5f7ce93c56e9.scn"
 
 [deps]
 
-source_file="res://assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/decoration/nature/trees_A_small.fbx"
-dest_files=["res://.godot/imported/trees_A_small.fbx-9ec524252d95f3971dacb8f2e9b5a14a.scn"]
+source_file="res://Assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/decoration/nature/trees_A_small.fbx"
+dest_files=["res://.godot/imported/trees_A_small.fbx-b171ea7fa2ec9168dc6e5f7ce93c56e9.scn"]
 
 [params]
 
