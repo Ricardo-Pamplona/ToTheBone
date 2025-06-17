@@ -6,6 +6,7 @@ const Finder = preload("res://scripts/utils/finder.gd")
 
 const TILE_SIZE := 2.0
 const HEX_TILE = preload("res://scenes/hex_tile.tscn")
+const UNIT = preload("res://scenes/unit.tscn")
 
 @export var grid_size := 30
 
@@ -14,6 +15,7 @@ var tile_map: Dictionary = {}
 #Teste da função A*
 func _ready() -> void:
 	_generate_grid()
+	_add_unit()
 	var path = Finder.build_path(Vector2i(15, 20), Vector2i(5, 10), tile_map)
 	for tile_pos in path:
 		var tile = tile_map.get(tile_pos)
@@ -31,3 +33,8 @@ func _generate_grid():
 			tile.translate(Vector3(tile_coordinates.x, 0, tile_coordinates.y))
 			tile_map[Vector2i(x, y)] = tile
 			tile_coordinates.y += TILE_SIZE
+			
+
+func _spawn_unit():
+	var unit = UNIT.instantiate()
+	add_child(unit)
