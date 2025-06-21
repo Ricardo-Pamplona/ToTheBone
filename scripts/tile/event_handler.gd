@@ -8,14 +8,12 @@ const ENEMY = preload("res://scenes/enemies.tscn")
 const TEAM = preload("res://scripts/enums/teams.gd")
 
 @onready var area := $"."
-@export var possible_tiles : Array[tile_data]
 
 static var first_clicked_tile: StaticBody3D = null
 
 var x: int
 var y: int
 var body: CharacterBody3D = null
-var _data: tile_data = null
 
 static var last_x: int = -1
 static var last_y: int = -1
@@ -70,10 +68,17 @@ func finish():
 		attack()
 
 func attack():
-	var has_died = body.take_damage(100)
+	await get_tree().create_timer(1).timeout
+	var has_died = body.take_damage(1)
 	if has_died:
+		body.die()
+		await get_tree().create_timer(1).timeout
 		remove_child(body)
 		body = null
+	else:
+		body.hit()
+		await get_tree().create_timer(0.5).timeout
+
 	HEX_GRID.change_player()
 	first_clicked_tile = null
 	self.bigger()
@@ -114,7 +119,7 @@ func bigger():
 	scale = Vector3.ONE * 1
 
 func give(body: CharacterBody3D) -> void:
-	self.body = body		
+	self.body = body
 	add_child(body)
 	
 func take() -> CharacterBody3D:

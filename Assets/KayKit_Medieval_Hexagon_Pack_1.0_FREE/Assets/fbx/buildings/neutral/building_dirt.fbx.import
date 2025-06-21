@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c51mg7krls24c"
-path="res://.godot/imported/building_dirt.fbx-1f25d8e47ec4f2c429b8a795d8495236.scn"
+path="res://.godot/imported/building_dirt.fbx-ef0e468be2bda569bfa96c5d1ff9494b.scn"
 
 [deps]
 
-source_file="res://Assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/buildings/neutral/building_dirt.fbx"
-dest_files=["res://.godot/imported/building_dirt.fbx-1f25d8e47ec4f2c429b8a795d8495236.scn"]
+source_file="res://assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/buildings/neutral/building_dirt.fbx"
+dest_files=["res://.godot/imported/building_dirt.fbx-ef0e468be2bda569bfa96c5d1ff9494b.scn"]
 
 [params]
 

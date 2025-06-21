@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cch1q5jr84ffq"
-path="res://.godot/imported/building_destroyed.fbx-fd0bfca84f2565a80b6ab926ad8a2881.scn"
+path="res://.godot/imported/building_destroyed.fbx-7c23481fe8fca139cdce1466ea62427f.scn"
 
 [deps]
 
-source_file="res://Assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/buildings/neutral/building_destroyed.fbx"
-dest_files=["res://.godot/imported/building_destroyed.fbx-fd0bfca84f2565a80b6ab926ad8a2881.scn"]
+source_file="res://assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/buildings/neutral/building_destroyed.fbx"
+dest_files=["res://.godot/imported/building_destroyed.fbx-7c23481fe8fca139cdce1466ea62427f.scn"]
 
 [params]
 

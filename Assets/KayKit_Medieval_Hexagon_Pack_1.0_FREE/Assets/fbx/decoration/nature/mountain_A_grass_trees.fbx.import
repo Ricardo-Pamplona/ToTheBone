@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cd10mc6brs470"
-path="res://.godot/imported/mountain_A_grass_trees.fbx-c82af6c90741d4c6fc9c04e2d27c907b.scn"
+path="res://.godot/imported/mountain_A_grass_trees.fbx-51c569b687cc9d185d6a9ed3c705dbfa.scn"
 
 [deps]
 
-source_file="res://Assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/decoration/nature/mountain_A_grass_trees.fbx"
-dest_files=["res://.godot/imported/mountain_A_grass_trees.fbx-c82af6c90741d4c6fc9c04e2d27c907b.scn"]
+source_file="res://assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/decoration/nature/mountain_A_grass_trees.fbx"
+dest_files=["res://.godot/imported/mountain_A_grass_trees.fbx-51c569b687cc9d185d6a9ed3c705dbfa.scn"]
 
 [params]
 

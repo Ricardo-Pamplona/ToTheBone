@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bq5qestn4wkci"
-path="res://.godot/imported/wand.fbx-c25935beb8951cca4e5fda4b126bd6e8.scn"
+path="res://.godot/imported/wand.fbx-c9cba71a49b50e1d7bb9a8d62614499c.scn"
 
 [deps]
 
-source_file="res://Assets/KayKit_Adventurers_1.0_FREE/Assets/fbx/wand.fbx"
-dest_files=["res://.godot/imported/wand.fbx-c25935beb8951cca4e5fda4b126bd6e8.scn"]
+source_file="res://assets/KayKit_Adventurers_1.0_FREE/Assets/fbx/wand.fbx"
+dest_files=["res://.godot/imported/wand.fbx-c9cba71a49b50e1d7bb9a8d62614499c.scn"]
 
 [params]
 

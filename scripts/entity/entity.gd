@@ -47,3 +47,15 @@ func take_damage(damage: int) -> bool:
 		return true
 	stats.health -= damage
 	return false
+	
+func die():
+	animation_player.play("Death_C_Skeletons")
+
+func hit():
+	animation_player.play("Hit_A")
+
+func idle():
+	animation_player.play("Idle")
+
+func attack():
+	animation_player.play("1H_Melee_Attack_Stab")

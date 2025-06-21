@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cugy7qqimedvl"
-path="res://.godot/imported/sample1.jpg-ed034b50ad528be9d53624616062d0a1.ctex"
+path="res://.godot/imported/sample1.jpg-c938ffdf7e1495bdd3b31d4a7a7541a7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Samples/sample1.jpg"
-dest_files=["res://.godot/imported/sample1.jpg-ed034b50ad528be9d53624616062d0a1.ctex"]
+source_file="res://assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Samples/sample1.jpg"
+dest_files=["res://.godot/imported/sample1.jpg-c938ffdf7e1495bdd3b31d4a7a7541a7.ctex"]
 
 [params]
 
