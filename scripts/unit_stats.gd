@@ -21,10 +21,10 @@ static func default() -> UnitStats:
 	return stats
 
 #stats
-@export var health : float
-@export var strength : float
+@export var health : int
+@export var strength : int
 @export var speed : int
-@export var level : float
+@export var level : int
 
 #weapon masteries
 @export var sword_m : int
@@ -34,7 +34,7 @@ static func default() -> UnitStats:
 @export var staff_m : int
 
 #stats multipliers
-@export var health_m: float
-@export var strength_m: float
-@export var speed_m: float
-@export var xp_m: float
+@export var health_m: int
+@export var strength_m: int
+@export var speed_m: int
+@export var xp_m: int

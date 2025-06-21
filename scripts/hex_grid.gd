@@ -3,28 +3,36 @@ extends Node3D
 const FINDER = preload("res://scripts/utils/finder.gd")
 const TILE_SIZE := 2.0
 const HEX_TILE = preload("res://scenes/hex_tile.tscn")
-const UNIT = preload("res://scenes/unit.tscn")
 const ENEMY = preload("res://scenes/enemies.tscn")
+const TEAM = preload("res://scripts/enums/teams.gd")
 
 @export var grid_size := 30
 
+static var current_player: TEAM.Teams = TEAM.Teams.Player 
 static var tile_map: Dictionary = {}
 static var path: Array = []
 
 func _ready() -> void:
 	_generate_grid()
 
+static func change_player():
+	if current_player == TEAM.Teams.Player:
+		current_player = TEAM.Teams.Enemy
+		print("ENEMY's Turn")
+	else:
+		current_player = TEAM.Teams.Player
+		print("PLAYER's Turn")
+
 static func move(x1: int, y1: int, x2: int, y2: int, limit: int) -> void:
 	var path = FINDER.build_path(Vector2i(x1, y1), Vector2i(x2, y2), tile_map, limit)
 
-	var origin_tile = tile_map.get(path[0])
-	var destination_tile = tile_map.get(path[path.size() - 1])
+	var origin_mob = tile_map.get(path[0])
+	var destination_mob = tile_map.get(path[path.size() - 1])
 
-	var body = origin_tile.take()  
-
-	if destination_tile.body == null:
-		destination_tile.body = body
-		destination_tile.add_child(body)
+	var body = origin_mob.take()  
+	destination_mob.give(body)
+	
+	change_player()
 
 static func erase() -> void:
 	for tile_pos in tile_map:

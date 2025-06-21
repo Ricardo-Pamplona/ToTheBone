@@ -12,3 +12,9 @@ static func default(team: TEAM.Teams) -> CharacterBody3D:
 	unit.stats = UnitStats.default()
 	unit.team = team
 	return unit
+
+func take_damage(damage: int) -> bool:
+	if damage >= stats.health:
+		return true
+	stats.health -= damage 
+	return false

@@ -3,6 +3,16 @@ extends Node
 const Conversion = preload("res://scripts/utils/conversion.gd")
 const PriorityQueue = preload("res://scripts/dtos/priority_queue.gd")
 
+static func are_neighbors(x1: int, y1: int, x2: int, y2: int) -> bool:
+	var cube1 = Conversion.offset_to_cube(x1, y1)
+	var cube2 = Conversion.offset_to_cube(x2, y2)
+	
+	var dx = abs(cube1.x - cube2.x)
+	var dy = abs(cube1.y - cube2.y)
+	var dz = abs(cube1.z - cube2.z)
+
+	return dx + dy + dz == 2
+
 static func build_path(start: Vector2i, goal: Vector2i, tile_map: Dictionary, limit: int) -> Array:
 	var start_cube = Conversion.offset_to_cube(start.x, start.y)
 	var goal_cube = Conversion.offset_to_cube(goal.x, goal.y)
@@ -24,13 +34,12 @@ static func build_path(start: Vector2i, goal: Vector2i, tile_map: Dictionary, li
 		for next_cube in Conversion.hex_neighbors(current):
 			var next_offset = Conversion.cube_to_offset(next_cube)
 
-			# ✅ Skip if tile is missing or invalid
 			if not tile_map.has(next_offset):
 				continue
 
 			var tile = tile_map[next_offset]
 			if not tile.can_be_used_in_path():
-				continue  # ❌ Unwalkable or blocked tile
+				continue
 
 			var new_cost = cost_so_far[current] + 1
 			if not cost_so_far.has(next_cube) or new_cost < cost_so_far[next_cube]:
@@ -39,7 +48,6 @@ static func build_path(start: Vector2i, goal: Vector2i, tile_map: Dictionary, li
 				frontier.push(next_cube, priority)
 				came_from[next_cube] = current
 
-	# Reconstruct path
 	var path := []
 	var current = goal_cube
 	while current != null and came_from.has(current):

@@ -2,7 +2,8 @@ extends StaticBody3D
 
 const HEX_GRID = preload("res://scripts/hex_grid.gd")
 const FINDER = preload("res://scripts/utils/finder.gd")
-const UNIT = preload("res://scripts/unit.gd")
+#const UNIT = preload("res://scripts/unit.gd")
+const UNIT = preload("res://scripts/entity/entity.gd")
 const ENEMY = preload("res://scenes/enemies.tscn")
 const TEAM = preload("res://scripts/enums/teams.gd")
 
@@ -19,19 +20,16 @@ var _data: tile_data = null
 static var last_x: int = -1
 static var last_y: int = -1
 
+static var i: int = 1  	
+
 func can_be_used_in_path() -> bool:
 	if body == null:
-		print("NULL")
 		return true
 	
 	if body.team == first_clicked_tile.body.team:
-		print("TEAM")
 		return true
 	
-	print("FALSE")
 	return false
-	
-static var i: int = 1  	
 
 func fill(x: int, y: int, body: bool) -> void:
 	self.x = x
@@ -39,13 +37,9 @@ func fill(x: int, y: int, body: bool) -> void:
 	if body:
 		if i % 2 == 0:
 			_spawn_unit(TEAM.Teams.Player)
-			print("PLAYER")
 		else:
-			print("ENEMY")
 			_spawn_unit(TEAM.Teams.Enemy)
-		print(i)
 		i += 1
-	
 
 func _spawn_unit(team: TEAM.Teams):
 	body = UNIT.default(team)
@@ -57,9 +51,9 @@ func _ready():
 
 func _input_event(camera, event, position, normal, shape_idx):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		if first_clicked_tile == null and body != null:
+		if first_clicked_tile == null and body != null and body.team == HEX_GRID.current_player:
 			start()
-		elif first_clicked_tile != null and first_clicked_tile.body != null and self.body == null:
+		elif first_clicked_tile != null and first_clicked_tile.body != null:
 			finish()
 	
 	elif first_clicked_tile != null and (last_y != y or last_x != x):
@@ -70,6 +64,24 @@ func start():
 	self.smaller()
 	
 func finish():
+	if body == null:
+		move() 
+	elif body.team != HEX_GRID.current_player and FINDER.are_neighbors(first_clicked_tile.x, first_clicked_tile.y, last_x, last_y):
+		attack()
+
+func attack():
+	var has_died = body.take_damage(100)
+	if has_died:
+		remove_child(body)
+		body = null
+	HEX_GRID.change_player()
+	first_clicked_tile = null
+	self.bigger()
+	HEX_GRID.erase()
+	last_x = -1
+	last_y = -1
+
+func move():
 	HEX_GRID.move(
 		first_clicked_tile.x, 
 		first_clicked_tile.y, 
@@ -94,7 +106,6 @@ func draw():
 		last_y, 
 		first_clicked_tile.body.stats.speed
 	)
-	#self.smaller()
 	
 func smaller():
 	scale = Vector3.ONE * 0.5
@@ -102,12 +113,9 @@ func smaller():
 func bigger():
 	scale = Vector3.ONE * 1
 
-func remove_unit_from_tile():
-	if body:
-		remove_child(body)
-		
 func give(body: CharacterBody3D) -> void:
 	self.body = body		
+	add_child(body)
 	
 func take() -> CharacterBody3D:
 	var b := body
