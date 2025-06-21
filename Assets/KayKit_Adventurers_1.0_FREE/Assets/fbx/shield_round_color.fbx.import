@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://df6nsxoj2v7s0"
-path="res://.godot/imported/shield_round_color.fbx-4e91add7ebad809e80e9020f6d337ebc.scn"
+path="res://.godot/imported/shield_round_color.fbx-1ce1611e721b8d942c41f73933dd1906.scn"
 
 [deps]
 
-source_file="res://assets/KayKit_Adventurers_1.0_FREE/Assets/fbx/shield_round_color.fbx"
-dest_files=["res://.godot/imported/shield_round_color.fbx-4e91add7ebad809e80e9020f6d337ebc.scn"]
+source_file="res://Assets/KayKit_Adventurers_1.0_FREE/Assets/fbx/shield_round_color.fbx"
+dest_files=["res://.godot/imported/shield_round_color.fbx-1ce1611e721b8d942c41f73933dd1906.scn"]
 
 [params]
 

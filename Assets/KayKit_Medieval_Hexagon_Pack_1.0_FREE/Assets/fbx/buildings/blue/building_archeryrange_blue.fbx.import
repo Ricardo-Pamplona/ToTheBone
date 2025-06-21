@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cr6c47bfi1c0g"
-path="res://.godot/imported/building_archeryrange_blue.fbx-989b23b5e5b72db07393ae391fe15029.scn"
+path="res://.godot/imported/building_archeryrange_blue.fbx-3549298e479cde3aeeff3376bbdaab3c.scn"
 
 [deps]
 
-source_file="res://assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/buildings/blue/building_archeryrange_blue.fbx"
-dest_files=["res://.godot/imported/building_archeryrange_blue.fbx-989b23b5e5b72db07393ae391fe15029.scn"]
+source_file="res://Assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/buildings/blue/building_archeryrange_blue.fbx"
+dest_files=["res://.godot/imported/building_archeryrange_blue.fbx-3549298e479cde3aeeff3376bbdaab3c.scn"]
 
 [params]
 

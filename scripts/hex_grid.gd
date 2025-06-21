@@ -14,15 +14,27 @@ static var path: Array = []
 func _ready() -> void:
 	_generate_grid()
 
+static func move(x1: int, y1: int, x2: int, y2: int, limit: int) -> void:
+	var path = FINDER.build_path(Vector2i(x1, y1), Vector2i(x2, y2), tile_map, limit)
+
+	var origin_tile = tile_map.get(path[0])
+	var destination_tile = tile_map.get(path[path.size() - 1])
+
+	var body = origin_tile.take()  
+
+	if destination_tile.body == null:
+		destination_tile.body = body
+		destination_tile.add_child(body)
+
 static func erase() -> void:
-	for tile_pos in path:
+	for tile_pos in tile_map:
 		var tile = tile_map.get(tile_pos)
 		if tile:
 			tile.bigger()
 					
-static func draw(x1: int, y1: int, x2: int, y2: int) -> void:
+static func draw(x1: int, y1: int, x2: int, y2: int, limit: int) -> void:
 	erase()
-	path = FINDER.build_path(Vector2i(x1, y1), Vector2i(x2, y2), tile_map)
+	path = FINDER.build_path(Vector2i(x1, y1), Vector2i(x2, y2), tile_map, limit)
 	
 	for tile_pos in path:
 		var tile = tile_map.get(tile_pos)

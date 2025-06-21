@@ -1,0 +1,4 @@
+enum Teams {
+	Player,
+	Enemy
+}

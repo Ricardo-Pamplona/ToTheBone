@@ -1,10 +1,29 @@
 extends Resource
 class_name UnitStats
 
+static func default() -> UnitStats:
+	var stats := UnitStats.new()
+	
+	stats.health = 10
+	stats.strength = 5 
+	stats.speed = 5
+	stats.level = 5
+	stats.sword_m = 1
+	stats.bow_m = 1
+	stats.unarmed_m = 1
+	stats.axe_m = 1
+	stats.staff_m = 1
+	stats.health_m = 1
+	stats.strength_m = 1
+	stats.speed_m = 1
+	stats.xp_m = 1
+
+	return stats
+
 #stats
 @export var health : float
 @export var strength : float
-@export var speed : float
+@export var speed : int
 @export var level : float
 
 #weapon masteries
