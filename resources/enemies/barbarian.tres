@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=3 format=3 uid="uid://dnld4of6bc6xa"]
+
+[ext_resource type="Script" uid="uid://2ax0u07ub105" path="res://scripts/enemie_stats.gd" id="1_p1mca"]
+[ext_resource type="PackedScene" uid="uid://b6hiefugixmpr" path="res://assets/KayKit_Adventurers_1.0_FREE/Characters/fbx/Barbarian.fbx" id="1_y6q8u"]
+
+[resource]
+script = ExtResource("1_p1mca")
+model = ExtResource("1_y6q8u")
+health = 6.0
+strength = 10.0
+speed = 4.0
+range = 1.0
+metadata/_custom_type_script = "uid://2ax0u07ub105"

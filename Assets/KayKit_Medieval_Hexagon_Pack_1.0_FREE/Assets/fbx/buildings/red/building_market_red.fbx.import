@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://be3tmr8fdr2h0"
-path="res://.godot/imported/building_market_red.fbx-2ab7e5925f9c4c266325848d8c848cde.scn"
+path="res://.godot/imported/building_market_red.fbx-bf68b86731af2616e9031db3098a669a.scn"
 
 [deps]
 
-source_file="res://Assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/buildings/red/building_market_red.fbx"
-dest_files=["res://.godot/imported/building_market_red.fbx-2ab7e5925f9c4c266325848d8c848cde.scn"]
+source_file="res://assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/buildings/red/building_market_red.fbx"
+dest_files=["res://.godot/imported/building_market_red.fbx-bf68b86731af2616e9031db3098a669a.scn"]
 
 [params]
 

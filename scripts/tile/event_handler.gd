@@ -3,18 +3,17 @@ extends StaticBody3D
 const HEX_GRID = preload("res://scripts/hex_grid.gd")
 const FINDER = preload("res://scripts/utils/finder.gd")
 const UNIT = preload("res://scenes/unit.tscn")
-
-const SCALE_FACTOR := 0.5
-var is_scaled_down := false
+const ENEMY = preload("res://scenes/enemies.tscn")
 
 @onready var area := $"."
-@onready var big := $big
+@export var possible_tiles : Array[tile_data]
 
 static var first_clicked_tile: StaticBody3D = null
 
 var x: int
 var y: int
 var body: CharacterBody3D = null
+var _data: tile_data = null
 
 static var last_x: int = -1
 static var last_y: int = -1
@@ -28,6 +27,7 @@ func fill(x: int, y: int, body: bool) -> void:
 func _spawn_unit():
 	body = UNIT.instantiate()
 	add_child(body)
+	
 
 func _ready():
 	area.connect("mouse_entered", Callable(self, "_on_mouse_entered"))
@@ -65,10 +65,10 @@ func draw():
 	self.smaller()
 	
 func smaller():
-	big.visible = false
+	scale = Vector3.ONE * 0.5
 	
 func bigger():
-	big.visible = true	
+	scale = Vector3.ONE * 1
 
 func remove_unit_from_tile():
 	if body:

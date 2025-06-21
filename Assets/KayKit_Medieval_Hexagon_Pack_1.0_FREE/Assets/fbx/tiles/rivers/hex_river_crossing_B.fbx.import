@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cf5kob4ebjxpg"
-path="res://.godot/imported/hex_river_crossing_B.fbx-de9ee00b35b940be19113a0c6a11b860.scn"
+path="res://.godot/imported/hex_river_crossing_B.fbx-958bb1e3bdd9e21b5c56cd383330a19a.scn"
 
 [deps]
 
-source_file="res://Assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/tiles/rivers/hex_river_crossing_B.fbx"
-dest_files=["res://.godot/imported/hex_river_crossing_B.fbx-de9ee00b35b940be19113a0c6a11b860.scn"]
+source_file="res://assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/tiles/rivers/hex_river_crossing_B.fbx"
+dest_files=["res://.godot/imported/hex_river_crossing_B.fbx-958bb1e3bdd9e21b5c56cd383330a19a.scn"]
 
 [params]
 

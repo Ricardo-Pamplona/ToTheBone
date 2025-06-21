@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://ygektin2lr0x"
-path="res://.godot/imported/weaponrack.fbx-4f77165dd815446109d5c25416cab7de.scn"
+path="res://.godot/imported/weaponrack.fbx-40e79ad0f372a24dd52e9f8e20b8d9dc.scn"
 
 [deps]
 
-source_file="res://Assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/decoration/props/weaponrack.fbx"
-dest_files=["res://.godot/imported/weaponrack.fbx-4f77165dd815446109d5c25416cab7de.scn"]
+source_file="res://assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/decoration/props/weaponrack.fbx"
+dest_files=["res://.godot/imported/weaponrack.fbx-40e79ad0f372a24dd52e9f8e20b8d9dc.scn"]
 
 [params]
 

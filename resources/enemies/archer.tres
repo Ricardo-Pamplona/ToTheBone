@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=3 format=3 uid="uid://cyppw5sxl3yiu"]
+
+[ext_resource type="PackedScene" uid="uid://bfwel48k8amre" path="res://assets/KayKit_Adventurers_1.0_FREE/Characters/fbx/RogueHooded.fbx" id="1_72jsm"]
+[ext_resource type="Script" uid="uid://2ax0u07ub105" path="res://scripts/enemie_stats.gd" id="1_hqdlr"]
+
+[resource]
+script = ExtResource("1_hqdlr")
+model = ExtResource("1_72jsm")
+health = 5.0
+strength = 5.0
+speed = 5.0
+range = 2.0
+metadata/_custom_type_script = "uid://2ax0u07ub105"

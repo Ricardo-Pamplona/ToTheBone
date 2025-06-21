@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dkyplv7ublphb"
-path="res://.godot/imported/hex_coast_E.fbx-30037ce6694bd645071deaab677b67ec.scn"
+path="res://.godot/imported/hex_coast_E.fbx-2bf56ea49ecdb65db42543475e233cb7.scn"
 
 [deps]
 
-source_file="res://Assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/tiles/coast/hex_coast_E.fbx"
-dest_files=["res://.godot/imported/hex_coast_E.fbx-30037ce6694bd645071deaab677b67ec.scn"]
+source_file="res://assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/tiles/coast/hex_coast_E.fbx"
+dest_files=["res://.godot/imported/hex_coast_E.fbx-2bf56ea49ecdb65db42543475e233cb7.scn"]
 
 [params]
 

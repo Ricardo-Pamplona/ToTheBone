@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=3 format=3 uid="uid://ynp3vw7w6xh"]
+
+[ext_resource type="Script" uid="uid://2ax0u07ub105" path="res://scripts/enemie_stats.gd" id="1_hut0r"]
+[ext_resource type="PackedScene" uid="uid://hnqyut3fti2m" path="res://assets/KayKit_Adventurers_1.0_FREE/Characters/fbx/Mage.fbx" id="1_uggwv"]
+
+[resource]
+script = ExtResource("1_hut0r")
+model = ExtResource("1_uggwv")
+health = 5.0
+strength = 10.0
+speed = 1.0
+range = 3.0
+metadata/_custom_type_script = "uid://2ax0u07ub105"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=3 format=3 uid="uid://0gbcjot331lx"]
+
+[ext_resource type="PackedScene" uid="uid://685htvmivn5w" path="res://assets/KayKit_Adventurers_1.0_FREE/Characters/fbx/Knight.fbx" id="1_s1n36"]
+[ext_resource type="Script" uid="uid://2ax0u07ub105" path="res://scripts/enemie_stats.gd" id="2_d8pd8"]
+
+[resource]
+script = ExtResource("2_d8pd8")
+model = ExtResource("1_s1n36")
+health = 10.0
+strength = 10.0
+speed = 3.0
+range = 1.0
+metadata/_custom_type_script = "uid://2ax0u07ub105"

@@ -1,16 +1,16 @@
 extends Node3D
 
 const FINDER = preload("res://scripts/utils/finder.gd")
-
 const TILE_SIZE := 2.0
 const HEX_TILE = preload("res://scenes/hex_tile.tscn")
 const UNIT = preload("res://scenes/unit.tscn")
+const ENEMY = preload("res://scenes/enemies.tscn")
 
 @export var grid_size := 30
 
 static var tile_map: Dictionary = {}
 static var path: Array = []
- 
+
 func _ready() -> void:
 	_generate_grid()
 
