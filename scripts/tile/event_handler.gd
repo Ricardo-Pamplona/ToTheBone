@@ -18,7 +18,7 @@ var body: CharacterBody3D = null
 static var last_x: int = -1
 static var last_y: int = -1
 
-static var i: int = 1  	
+static var i: int = 1 
 
 func can_be_used_in_path() -> bool:
 	if body == null:
@@ -68,8 +68,7 @@ func finish():
 		attack()
 
 func attack():
-	await get_tree().create_timer(1).timeout
-	var has_died = body.take_damage(1)
+	var has_died = body.take_damage(body.stats.strength)
 	if has_died:
 		body.die()
 		await get_tree().create_timer(1).timeout

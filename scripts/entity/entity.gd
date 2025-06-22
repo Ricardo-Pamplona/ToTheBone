@@ -16,7 +16,7 @@ static func default(team: TEAM.Teams) -> CharacterBody3D:
 	unit.stats = UnitStats.default()
 	unit.team = team
 	if team == TEAM.Teams.Player:
-		unit.asset_type = "Warrior"
+		unit.asset_type = "Rogue"
 	else:
 		unit.asset_type = "Mage"
 	return unit

@@ -39,7 +39,8 @@ static func erase() -> void:
 		var tile = tile_map.get(tile_pos)
 		if tile:
 			tile.bigger()
-					
+
+
 static func draw(x1: int, y1: int, x2: int, y2: int, limit: int) -> void:
 	erase()
 	path = FINDER.build_path(Vector2i(x1, y1), Vector2i(x2, y2), tile_map, limit)
