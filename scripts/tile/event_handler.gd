@@ -68,6 +68,7 @@ func finish():
 		attack()
 
 func attack():
+	first_clicked_tile.body.attack() 
 	var has_died = body.take_damage(body.stats.strength)
 	if has_died:
 		body.die()
