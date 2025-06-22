@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://chfwu2uq8q0qt"
-path="res://.godot/imported/engineer.png-e174bf7af67becc9699f3bb6b6c0904b.ctex"
+path="res://.godot/imported/engineer.png-99f91ffd8370c2ee55b43a99899515e1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/KayKit_Adventurers_1.0_FREE/Samples/engineer.png"
-dest_files=["res://.godot/imported/engineer.png-e174bf7af67becc9699f3bb6b6c0904b.ctex"]
+source_file="res://Assets/KayKit_Adventurers_1.0_FREE/Samples/engineer.png"
+dest_files=["res://.godot/imported/engineer.png-99f91ffd8370c2ee55b43a99899515e1.ctex"]
 
 [params]
 

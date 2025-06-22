@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://du7ffcner6u20"
-path="res://.godot/imported/waterlily_A.fbx-ceff652fcaf31309723de9f646423284.scn"
+path="res://.godot/imported/waterlily_A.fbx-14a732c71e98367d0817a01e4100a90f.scn"
 
 [deps]
 
-source_file="res://assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/decoration/nature/waterlily_A.fbx"
-dest_files=["res://.godot/imported/waterlily_A.fbx-ceff652fcaf31309723de9f646423284.scn"]
+source_file="res://Assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/decoration/nature/waterlily_A.fbx"
+dest_files=["res://.godot/imported/waterlily_A.fbx-14a732c71e98367d0817a01e4100a90f.scn"]
 
 [params]
 

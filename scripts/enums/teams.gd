@@ -1,4 +1,5 @@
 enum Teams {
 	Player,
-	Enemy
+	Enemy,
+	Empty
 }

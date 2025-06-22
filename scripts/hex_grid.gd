@@ -70,14 +70,19 @@ func start_round():
 			tile.body.queue_free()
 			tile.body = null
 	
-	var total_to_spawn = num_players + num_enemies
+	var players_to_spawn = num_players
+	var enemies_to_spawn = num_enemies
 	var spawned = 0
 	for tile in tile_map.values():
-		if spawned >= total_to_spawn:
+		if players_to_spawn == 0 and enemies_to_spawn == 0:
 			break
 		elif tile.x % 10 == 0 and tile.y % 10 == 0:
-			tile.fill(tile.x, tile.y, true)
-			spawned += 1
+			if enemies_to_spawn > 0:
+				tile.fill(tile.x, tile.y, TEAM.Teams.Player)
+				enemies_to_spawn -= 1
+			elif num_players > 0:
+				tile.fill(tile.x, tile.y, TEAM.Teams.Enemy)
+				players_to_spawn -= 1
 
 func next_round():
 	round += 1
@@ -92,7 +97,7 @@ func _generate_grid():
 		tile_coordinates.y = 0 if x % 2 == 0 else TILE_SIZE / 2
 		for y in range(grid_size):
 			var tile = HEX_TILE.instantiate()
-			tile.fill(x, y, false)
+			tile.fill(x, y, TEAM.Teams.Empty)
 			add_child(tile)
 			tile.translate(Vector3(tile_coordinates.x, 0, tile_coordinates.y))
 			tile_map[Vector2i(x, y)] = tile

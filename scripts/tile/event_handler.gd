@@ -32,16 +32,11 @@ func can_be_used_in_path() -> bool:
 	
 	return false
 
-func fill(x: int, y: int, should_spawn: bool) -> void:
+func fill(x: int, y: int, team: TEAM.Teams) -> void:
 	self.x = x
 	self.y = y
-	if should_spawn:
-		if player_count < num_players:
-			_spawn_unit(TEAM.Teams.Player)
-			player_count += 1
-		elif enemy_count < num_enemies:
-			_spawn_unit(TEAM.Teams.Enemy)
-			enemy_count += 1
+	if team != TEAM.Teams.Empty:
+		_spawn_unit(team)
 
 func _spawn_unit(team: TEAM.Teams):
 	body = UNIT.default(team)
