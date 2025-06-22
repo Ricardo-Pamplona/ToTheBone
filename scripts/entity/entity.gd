@@ -28,6 +28,8 @@ func _ready():
 		animation_player = current_model.get_node_or_null("AnimationPlayer")
 		if not animation_player:
 			push_warning("No AnimationPlayer found on model: %s" % asset_type)
+	animation_player.animation_finished.connect(_on_animation_finished)
+	idle()
 
 func load_model(name: String) -> Node3D:
 	var model_paths = {
@@ -56,6 +58,10 @@ func hit():
 
 func idle():
 	animation_player.play("Idle")
+
+func _on_animation_finished(anim_name):
+	if anim_name != "idle":
+		idle()
 
 func attack():
 	animation_player.play("1H_Melee_Attack_Stab")

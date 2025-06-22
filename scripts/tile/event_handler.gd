@@ -46,7 +46,7 @@ func _spawn_unit(team: TEAM.Teams):
 func _ready():
 	area.connect("mouse_entered", Callable(self, "_on_mouse_entered"))
 	area.connect("mouse_exited", Callable(self, "_on_mouse_exited"))
-
+	
 func _input_event(camera, event, position, normal, shape_idx):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		if first_clicked_tile == null and body != null and body.team == HEX_GRID.current_player:
