@@ -8,6 +8,8 @@ const ENEMY = preload("res://scenes/enemies.tscn")
 const TEAM = preload("res://scripts/enums/teams.gd")
 
 @onready var area := $"."
+var num_players: int
+var num_enemies: int
 
 static var first_clicked_tile: StaticBody3D = null
 
@@ -18,7 +20,8 @@ var body: CharacterBody3D = null
 static var last_x: int = -1
 static var last_y: int = -1
 
-static var i: int = 1 
+static var player_count := 0
+static var enemy_count := 0
 
 func can_be_used_in_path() -> bool:
 	if body == null:
@@ -29,19 +32,22 @@ func can_be_used_in_path() -> bool:
 	
 	return false
 
-func fill(x: int, y: int, body: bool) -> void:
+func fill(x: int, y: int, should_spawn: bool) -> void:
 	self.x = x
 	self.y = y
-	if body:
-		if i % 2 == 0:
+	if should_spawn:
+		if player_count < num_players:
 			_spawn_unit(TEAM.Teams.Player)
-		else:
+			player_count += 1
+		elif enemy_count < num_enemies:
 			_spawn_unit(TEAM.Teams.Enemy)
-		i += 1
+			enemy_count += 1
 
 func _spawn_unit(team: TEAM.Teams):
 	body = UNIT.default(team)
 	add_child(body)
+	await body.ready
+	look_at_closest_enemy()
 
 func _ready():
 	area.connect("mouse_entered", Callable(self, "_on_mouse_entered"))
@@ -68,13 +74,17 @@ func finish():
 		attack()
 
 func attack():
+	first_clicked_tile.look_at_closest_enemy()
 	first_clicked_tile.body.attack() 
+	await get_tree().create_timer(0.5).timeout
 	var has_died = body.take_damage(body.stats.strength)
 	if has_died:
 		body.die()
 		await get_tree().create_timer(1).timeout
 		remove_child(body)
 		body = null
+		
+		check_victory_conditions()
 	else:
 		body.hit()
 		await get_tree().create_timer(0.5).timeout
@@ -97,6 +107,7 @@ func move():
 	first_clicked_tile = null
 	self.bigger()
 	HEX_GRID.erase()
+	look_at_closest_enemy()
 	last_x = -1
 	last_y = -1
 
@@ -127,3 +138,55 @@ func take() -> CharacterBody3D:
 	remove_child(b)
 	body = null
 	return b
+
+func look_at_closest_enemy():
+	if body == null:
+		return
+	
+	var closest_tile: StaticBody3D = null
+	var closest_dist := INF
+	
+	for tile in HEX_GRID.tile_map.values():
+		if tile == self or tile.body == null:
+			continue
+		
+		if tile.body.team != body.team:
+			var dist := Vector2(x, y).distance_to(Vector2(tile.x, tile.y))
+			if dist < closest_dist:
+				closest_dist = dist
+				closest_tile = tile
+	
+	if closest_tile != null:
+		var target_pos = closest_tile.global_transform.origin
+		body.look_at_target(target_pos)
+
+func reset_counts():
+	player_count = 0
+	enemy_count = 0
+
+func check_victory_conditions():
+	var has_player := false
+	var has_enemy := false
+	
+	for tile in HEX_GRID.tile_map.values():
+		if tile.body == null:
+			continue
+		if tile.body.team == TEAM.Teams.Player:
+			has_player = true
+		elif tile.body.team == TEAM.Teams.Enemy:
+			has_enemy = true
+	
+	if not has_enemy:
+		show_victory_screen()
+	elif not has_player:
+		show_defeat_screen()
+
+func show_victory_screen():
+	var hex_grid = get_tree().root.get_node("Board/HexGrid")
+	var ui = get_tree().root.get_node("Board/VictoryDefeatUI")
+	ui.call("show_victory", func(): hex_grid.next_round())
+
+
+func show_defeat_screen():
+	var ui = get_tree().root.get_node("Board/VictoryDefeatUI")
+	ui.call("show_defeat")

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=3 format=3 uid="uid://dommvlvj0r7k0"]
+
+[ext_resource type="PackedScene" uid="uid://brkpcfei1gba" path="res://assets/KayKit_Skeletons_1.0_FREE/characters/fbx/Skeleton_Warrior.fbx" id="1_qscrs"]
+[ext_resource type="Script" uid="uid://2ax0u07ub105" path="res://scripts/enemie_stats.gd" id="1_vjrns"]
+
+[resource]
+script = ExtResource("1_vjrns")
+model = ExtResource("1_qscrs")
+health = 10.0
+strength = 3.0
+speed = 2
+range = 0.0
+metadata/_custom_type_script = "uid://2ax0u07ub105"

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dq6nxpq73a4"]
+[gd_scene load_steps=7 format=3 uid="uid://dq6nxpq73a4"]
 
 [ext_resource type="Script" uid="uid://tdridcfyhy6m" path="res://scripts/hex_grid.gd" id="1_bw3vb"]
 [ext_resource type="Script" uid="uid://3wui6a0xrky1" path="res://assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/tiles/rivers/camera_position.gd" id="1_tx6nw"]
+[ext_resource type="Script" uid="uid://chk80xwwlxucr" path="res://scripts/victory_defeart_ui.gd" id="3_nglv8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_id3w2"]
 sky_top_color = Color(0.486275, 0.72549, 0.952941, 1)
@@ -36,3 +37,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
 
 [node name="HexGrid" type="Node3D" parent="."]
 script = ExtResource("1_bw3vb")
+
+[node name="VictoryDefeatUI" type="CanvasLayer" parent="."]
+process_mode = 3
+script = ExtResource("3_nglv8")
+
+[node name="Label" type="Label" parent="VictoryDefeatUI"]
+offset_left = 501.0
+offset_top = 253.0
+offset_right = 541.0
+offset_bottom = 276.0
+scale = Vector2(1.89323, 1.22222)
+
+[node name="Button" type="Button" parent="VictoryDefeatUI"]
+offset_left = 503.0
+offset_top = 286.0
+offset_right = 511.0
+offset_bottom = 294.0
+
+[connection signal="pressed" from="VictoryDefeatUI/Button" to="CameraPosition" method="_on_button_pressed"]
+[connection signal="pressed" from="VictoryDefeatUI/Button" to="VictoryDefeatUI" method="_on_button_pressed"]
