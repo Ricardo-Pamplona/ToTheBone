@@ -56,3 +56,46 @@ static func build_path(start: Vector2i, goal: Vector2i, tile_map: Dictionary, li
 
 	path.reverse()
 	return path.slice(0, limit)
+
+static func find_path_length(start: Vector2i, goal: Vector2i, tile_map: Dictionary, limit: int) -> int:
+	var start_cube = Conversion.offset_to_cube(start.x, start.y)
+	var goal_cube = Conversion.offset_to_cube(goal.x, goal.y)
+
+	var frontier := PriorityQueue.PriorityQueue.new()
+	frontier.push(start_cube, 0)
+
+	var came_from = {}
+	var cost_so_far = {}
+	came_from[start_cube] = null
+	cost_so_far[start_cube] = 0
+
+	while not frontier.is_empty():
+		var current = frontier.pop()
+
+		if current == goal_cube:
+			break
+
+		for next_cube in Conversion.hex_neighbors(current):
+			var next_offset = Conversion.cube_to_offset(next_cube)
+
+			if not tile_map.has(next_offset):
+				continue
+
+			var tile = tile_map[next_offset]
+			if not tile.can_be_used_in_path():
+				continue
+
+			var new_cost = cost_so_far[current] + 1
+			if not cost_so_far.has(next_cube) or new_cost < cost_so_far[next_cube]:
+				cost_so_far[next_cube] = new_cost
+				var priority = new_cost + Conversion.heuristic(goal_cube, next_cube)
+				frontier.push(next_cube, priority)
+				came_from[next_cube] = current
+
+	var path := []
+	var current = goal_cube
+	while current != null and came_from.has(current):
+		path.append(Conversion.cube_to_offset(current))
+		current = came_from.get(current)
+
+	return path.size()

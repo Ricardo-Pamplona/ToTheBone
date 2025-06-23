@@ -28,7 +28,9 @@ static func change_player():
 		current_player = TEAM.Teams.Enemy
 		var result = get_closest_enemy_hero_pair()
 		var distance = result.distance
-		if distance > 2:
+		var enemy = tile_map.get(result.enemy_pos)
+		print(enemy.body.stats.range + 1)
+		if distance > enemy.body.stats.range + 1:
 			var limit = result.limit 
 			
 			if limit >= distance:
@@ -36,7 +38,6 @@ static func change_player():
 			
 			move(result.enemy_pos.x, result.enemy_pos.y, result.hero_pos.x, result.hero_pos.y, limit)
 		else:
-			print(result)
 			enemy_attacks_hero(tile_map.get(result.enemy_pos), tile_map.get(result.hero_pos))
 	else:
 		current_player = TEAM.Teams.Player
@@ -96,9 +97,9 @@ static func get_closest_enemy_hero_pair() -> Dictionary:
 			if hero_tile.body == null or hero_tile.body.team != TEAM.Teams.Player:
 				continue
 
-			var path = FINDER.build_path(enemy_tile_pos, hero_tile_pos, tile_map, limit)
-			if path.size() > 0 and path.size() < shortest_path_length:
-				shortest_path_length = path.size()
+			var path = FINDER.find_path_length(enemy_tile_pos, hero_tile_pos, tile_map, limit)
+			if path > 0 and path < shortest_path_length:
+				shortest_path_length = path
 				best_enemy_pos = enemy_tile_pos
 				best_hero_pos = hero_tile_pos
 
@@ -143,7 +144,7 @@ func start_round():
 	for tile in tile_map.values():
 		if players_to_spawn == 0 and enemies_to_spawn == 0:
 			break
-		elif tile.x % 10 == 0 and tile.y % 10 == 0:
+		elif tile.x % 10 == 0 and tile.y % 20 == 0:
 			if players_to_spawn > 0:
 				players_to_spawn -= spawn_groups(tile, TEAM.Teams.Player, players_to_spawn)
 			elif enemies_to_spawn > 0:

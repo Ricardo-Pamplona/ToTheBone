@@ -37,7 +37,6 @@ static func default(team: TEAM.Teams) -> CharacterBody3D:
 		unit.asset_type = keys[randi() % keys.size()]
 		unit.stats = ENEMY_STATS_MAP.get(unit.asset_type, null)
 
-		
 	unit.team = team
 	return unit
 
