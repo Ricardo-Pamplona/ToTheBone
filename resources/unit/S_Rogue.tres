@@ -9,5 +9,5 @@ model = ExtResource("1_6weql")
 health = 4.0
 strength = 2.0
 speed = 4
-range = 0.0
+range = 2
 metadata/_custom_type_script = "uid://2ax0u07ub105"

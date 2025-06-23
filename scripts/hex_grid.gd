@@ -7,6 +7,7 @@ const ENEMY = preload("res://scenes/enemies.tscn")
 const UNIT = preload("res://scripts/entity/entity.gd")
 const TEAM = preload("res://scripts/enums/teams.gd")
 const EVENT_HANDLER = preload("res://scripts/tile/event_handler.gd")
+const TREE = preload("res://scenes/Tree.tscn")
 
 
 @export var grid_size := 30
@@ -19,10 +20,18 @@ static var current_player: TEAM.Teams = TEAM.Teams.Player
 static var tile_map: Dictionary = {}
 static var path: Array = []
 
+signal unit_hovered(stats)
+signal unit_unhovered()
+
 func _ready() -> void:
 	_generate_grid()
 	start_round()
+	spawn_trees(150)
 	randomize()
+	for tile in tile_map.values():
+		tile.connect("unit_hovered", Callable(self, "_on_unit_hovered"))
+		tile.connect("unit_unhovered", Callable(self, "_on_unit_unhovered"))
+		print("Conectado ao tile em", tile.x, tile.y)
 
 static func change_player():
 	if current_player == TEAM.Teams.Player:
@@ -45,6 +54,12 @@ static func change_player():
 		current_player = TEAM.Teams.Player
 
 static func enemy_attacks_hero(enemy_tile, player_tile):
+	if not enemy_tile.has_clear_line_to(player_tile):
+		print("Inimigo não pode atacar: obstáculo no caminho.")
+		change_player()
+		erase()
+		return
+
 	enemy_tile.look_at_closest_enemy()
 	var body = player_tile.body
 	var has_died = body.take_damage(enemy_tile.body.stats.strength)
@@ -151,7 +166,7 @@ func start_round():
 				tile.body.queue_free()
 			tile.body = null
 
-	var empty_tiles := tile_map.values().filter(func(t): return t.body == null)
+	var empty_tiles := tile_map.values().filter(func(t): return t.body == null and t.obstacle == null)
 	empty_tiles.shuffle()
 
 	var players_to_spawn = num_players
@@ -171,7 +186,7 @@ func start_round():
 			if sobreviventes.is_empty():
 				break
 			var neighbor_tile = tile_map.get(neighbor_pos)
-			if neighbor_tile and neighbor_tile.body == null:
+			if neighbor_tile and neighbor_tile.body == null and neighbor_tile.obstacle == null:
 				var survivors = sobreviventes.pop_back()
 				if survivors.get_parent():
 					survivors.get_parent().remove_child(survivor)
@@ -202,11 +217,22 @@ func spawn_groups(tile, team, amount) -> int:
 		if spawned == amount:
 			return spawned
 		var tile_neighbor = tile_map.get(neighbor)
-		if tile_neighbor != null and tile_neighbor.body == null:
+		if tile_neighbor != null and tile_neighbor.body == null and tile_neighbor.obstacle == null:
 			tile_neighbor.fill(tile_neighbor.x, tile_neighbor.y, team)
 			spawned += 1
 	
 	return spawned
+
+func spawn_trees(amount: int):
+	var empty_tiles := tile_map.values().filter(func(t): return t.body == null and t.obstacle == null)
+	empty_tiles.shuffle()
+
+	for i in range(min(amount, empty_tiles.size())):
+		var tile = empty_tiles[i]
+		var tree = TREE.instantiate()
+		tile.add_child(tree)
+		tile.obstacle = tree
+
 
 func next_round():
 	round += 1
@@ -277,7 +303,7 @@ func _generate_grid():
 
 func get_neighbors(x: int, y: int) -> Array:
 	var directions: Array
-
+	
 	if x % 2 == 0:
 		directions = [
 			Vector2i(+1,  0),   
@@ -303,3 +329,10 @@ func get_neighbors(x: int, y: int) -> Array:
 		var ny = y + offset.y
 		neighbors.append(Vector2i(nx, ny))
 	return neighbors
+
+func _on_unit_hovered(stats):
+	print("hex_grid recebeu hover com stats:", stats)
+	emit_signal("unit_hovered", stats)
+
+func _on_unit_unhovered():
+	emit_signal("unit_unhovered")

@@ -21,21 +21,34 @@ static var last_y: int = -1
 
 static var player_count := 0
 static var enemy_count := 0
+var obstacle: Node = null
+
+signal unit_hovered(stats: Dictionary)
+signal unit_unhovered()
+
+func _on_mouse_entered():
+	if body != null:
+		print("hover em tile", x, y)
+		emit_signal("unit_hovered", body.stats)
+
+func _on_mouse_exited():
+	emit_signal("unit_unhovered")
 
 func can_be_used_in_path() -> bool:
+	if obstacle != null:
+		return false
+
 	if body == null:
 		return true
-	
-	if first_clicked_tile == null:
+
+	if first_clicked_tile == null or first_clicked_tile.body == null:
 		return true
-		
-	if first_clicked_tile.body == null:
-		return true
-	
-	if body.team == first_clicked_tile.body.team:
-		return true
-	
+
+	if body.has_method("take_damage"):
+		return body.team == first_clicked_tile.body.team
+
 	return false
+
 
 func fill(x: int, y: int, team: TEAM.Teams) -> void:
 	self.x = x
@@ -70,8 +83,14 @@ func start():
 func finish():
 	if body == null:
 		move() 
-	elif body.team != HEX_GRID.current_player and FINDER.are_neighbors(first_clicked_tile.x, first_clicked_tile.y, last_x, last_y):
-		attack()
+	elif body.team != HEX_GRID.current_player:
+		var attacker = first_clicked_tile.body
+		var distance = Vector2(first_clicked_tile.x, first_clicked_tile.y).distance_to(Vector2(x, y))
+		if distance <= attacker.stats.range:
+			if first_clicked_tile.has_clear_line_to(self):
+				attack()
+			else:
+				print("Ataque bloqueado por obstáculo.")
 
 func attack():
 	first_clicked_tile.look_at_closest_enemy()
@@ -186,6 +205,20 @@ func check_victory_conditions():
 	elif not has_player:
 		show_defeat_screen()
 
+func has_clear_line_to(target_tile: StaticBody3D) -> bool:
+	var start = Vector2(x, y)
+	var end = Vector2(target_tile.x, target_tile.y)
+	var steps = int(start.distance_to(end))
+
+	for i in range(1, steps):
+		var t = float(i) / steps
+		var pos = start.lerp(end, t).round()
+		if pos == start or pos == end:
+			continue
+		var mid_tile = HEX_GRID.tile_map.get(Vector2i(pos))
+		if mid_tile != null and mid_tile.obstacle != null:
+			return false 
+	return true
 
 func show_victory_screen():
 	var hex_grid = get_tree().root.get_node("Board/HexGrid")

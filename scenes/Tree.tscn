@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cp4dolnycgiid"]
+
+[ext_resource type="PackedScene" uid="uid://b7xex6awwhnyj" path="res://assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/decoration/nature/trees_A_medium.fbx" id="1_nbyt5"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_dn7q5"]
+height = 0.66394
+radius = 0.878906
+
+[node name="StaticBody3D" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.425354, 0)
+shape = SubResource("CylinderShape3D_dn7q5")
+
+[node name="trees_A_medium" parent="." instance=ExtResource("1_nbyt5")]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0)

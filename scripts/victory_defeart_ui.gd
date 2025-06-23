@@ -30,9 +30,7 @@ func show_defeat():
 	button.text = "Voltar"
 	on_victory_callback = func(): get_tree().change_scene_to_file("res://scenes/menu.tscn")
 	show()
-	$VBoxContainer/AddStat.hide()
-	$VBoxContainer/AddUnit.hide()
-	$VBoxContainer/SwapUnit.hide()
+
 	get_tree().paused = true
 
 func _on_button_pressed() -> void:

@@ -6,8 +6,8 @@
 [resource]
 script = ExtResource("1_p1mca")
 model = ExtResource("1_y6q8u")
-health = 6.0
-strength = 10.0
+health = 4.0
+strength = 4.0
 speed = 4.0
 range = 1.0
 metadata/_custom_type_script = "uid://2ax0u07ub105"
