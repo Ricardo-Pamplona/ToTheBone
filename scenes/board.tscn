@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dq6nxpq73a4"]
+[gd_scene load_steps=8 format=3 uid="uid://dq6nxpq73a4"]
 
 [ext_resource type="Script" uid="uid://tdridcfyhy6m" path="res://scripts/hex_grid.gd" id="1_bw3vb"]
 [ext_resource type="Script" uid="uid://3wui6a0xrky1" path="res://assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/tiles/rivers/camera_position.gd" id="1_tx6nw"]
 [ext_resource type="Script" uid="uid://chk80xwwlxucr" path="res://scripts/victory_defeart_ui.gd" id="3_nglv8"]
+[ext_resource type="FontFile" uid="uid://dp8t70s0irgi6" path="res://Peaberry-Font-v2.0/PeaberryBase.ttf" id="4_fv4ni"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_id3w2"]
 sky_top_color = Color(0.486275, 0.72549, 0.952941, 1)
@@ -42,24 +43,29 @@ script = ExtResource("1_bw3vb")
 process_mode = 3
 script = ExtResource("3_nglv8")
 
-[node name="Label" type="Label" parent="VictoryDefeatUI"]
-offset_left = 501.0
-offset_top = 253.0
-offset_right = 541.0
-offset_bottom = 276.0
-scale = Vector2(1.89323, 1.22222)
-
-[node name="Button" type="Button" parent="VictoryDefeatUI"]
-offset_left = 503.0
-offset_top = 286.0
-offset_right = 511.0
-offset_bottom = 294.0
+[node name="Background" type="ColorRect" parent="VictoryDefeatUI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.278431, 0.494118, 1, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VictoryDefeatUI"]
-offset_left = 410.0
-offset_top = 293.0
-offset_right = 608.0
-offset_bottom = 394.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.0
+offset_top = -18.0
+offset_right = 116.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
 
 [node name="AddUnit" type="Button" parent="VictoryDefeatUI/VBoxContainer"]
 layout_mode = 2
@@ -73,8 +79,53 @@ text = "Aprimorar Uma Unidade"
 layout_mode = 2
 text = "Evoluir Uma Unidade"
 
-[connection signal="pressed" from="VictoryDefeatUI/Button" to="CameraPosition" method="_on_button_pressed"]
-[connection signal="pressed" from="VictoryDefeatUI/Button" to="VictoryDefeatUI" method="_on_button_pressed"]
+[node name="Button" type="Button" parent="VictoryDefeatUI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.0
+offset_top = -15.0
+offset_right = 117.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="VictoryDefeatUI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -139.0
+offset_top = -79.0
+offset_right = 140.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VictoryDefeatUI/Panel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = -13.5
+offset_right = -131.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.89323, 1.22222)
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_fv4ni")
+horizontal_alignment = 1
+
 [connection signal="pressed" from="VictoryDefeatUI/VBoxContainer/AddUnit" to="VictoryDefeatUI" method="_on_add_unit_pressed"]
 [connection signal="pressed" from="VictoryDefeatUI/VBoxContainer/AddStat" to="VictoryDefeatUI" method="_on_add_stat_pressed"]
 [connection signal="pressed" from="VictoryDefeatUI/VBoxContainer/SwapUnit" to="VictoryDefeatUI" method="_on_swap_unit_pressed"]
+[connection signal="pressed" from="VictoryDefeatUI/Button" to="CameraPosition" method="_on_button_pressed"]
+[connection signal="pressed" from="VictoryDefeatUI/Button" to="VictoryDefeatUI" method="_on_button_pressed"]

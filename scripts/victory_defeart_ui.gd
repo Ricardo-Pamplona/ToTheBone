@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var label: Label = $Label
+@onready var label: Label = $Panel/Label
 @onready var button: Button = $Button
 
 var on_victory_callback: Callable = Callable()
@@ -20,6 +20,7 @@ func show_victory(callback: Callable):
 	$VBoxContainer/AddUnit.show()
 	$VBoxContainer/SwapUnit.show()
 	show()
+	button.hide()
 	get_tree().paused = true
 	
 
@@ -29,6 +30,9 @@ func show_defeat():
 	button.text = "Voltar"
 	on_victory_callback = func(): get_tree().change_scene_to_file("res://scenes/menu.tscn")
 	show()
+	$VBoxContainer/AddStat.hide()
+	$VBoxContainer/AddUnit.hide()
+	$VBoxContainer/SwapUnit.hide()
 	get_tree().paused = true
 
 func _on_button_pressed() -> void:

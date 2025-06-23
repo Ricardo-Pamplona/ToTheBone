@@ -47,7 +47,7 @@ static func change_player():
 static func enemy_attacks_hero(enemy_tile, player_tile):
 	enemy_tile.look_at_closest_enemy()
 	var body = player_tile.body
-	var has_died = body.take_damage(10000)
+	var has_died = body.take_damage(enemy_tile.body.stats.strength)
 	enemy_tile.body.attack()
 	await player_tile.get_tree().create_timer(0.5).timeout
 	if has_died:
