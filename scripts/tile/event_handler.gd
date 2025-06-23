@@ -77,17 +77,17 @@ func attack():
 	first_clicked_tile.look_at_closest_enemy()
 	first_clicked_tile.body.attack() 
 	await get_tree().create_timer(0.5).timeout
-	var has_died = body.take_damage(body.stats.strength)
+	var has_died = body.take_damage(1000)
 	if has_died:
 		body.die()
 		await get_tree().create_timer(1).timeout
 		remove_child(body)
 		body = null
 		
-		check_victory_conditions()
 	else:
 		body.hit()
 		await get_tree().create_timer(0.5).timeout
+	check_victory_conditions()
 
 	HEX_GRID.change_player()
 	first_clicked_tile = null

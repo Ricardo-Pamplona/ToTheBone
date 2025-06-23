@@ -36,25 +36,23 @@ static func change_player():
 			
 			move(result.enemy_pos.x, result.enemy_pos.y, result.hero_pos.x, result.hero_pos.y, limit)
 		else:
-			attack(tile_map.get(result.enemy_pos), tile_map.get(result.hero_pos))
+			print(result)
+			enemy_attacks_hero(tile_map.get(result.enemy_pos), tile_map.get(result.hero_pos))
 	else:
 		current_player = TEAM.Teams.Player
 
-static func attack(enemy_tile, player_tile):
+static func enemy_attacks_hero(enemy_tile, player_tile):
 	enemy_tile.look_at_closest_enemy()
-	enemy_tile.body.attack() 
-	await enemy_tile.get_tree().create_timer(0.5).timeout
 	var body = player_tile.body
 	var has_died = body.take_damage(10000)
 	if has_died:
 		body.die()
-		await player_tile.get_tree().create_timer(1).timeout
 		player_tile.remove_child(body)
-		body = null
+		player_tile.body = null
 		
 		enemy_tile.check_victory_conditions()
 	else:
-		body.hit()
+		player_tile.body.hit()
 		await player_tile.get_tree().create_timer(1).timeout
 
 	change_player()
@@ -62,8 +60,12 @@ static func attack(enemy_tile, player_tile):
 
 static func move(x1: int, y1: int, x2: int, y2: int, limit: int) -> void:
 	var path = FINDER.build_path(Vector2i(x1, y1), Vector2i(x2, y2), tile_map, limit)
+	var index = path.get(0)
+	
+	if index == null:
+		return	
 
-	var origin_mob = tile_map.get(path[0])
+	var origin_mob = tile_map.get(index)
 	
 	origin_mob.look_at_closest_enemy()
 	
@@ -123,6 +125,7 @@ static func draw(x1: int, y1: int, x2: int, y2: int, limit: int) -> void:
 			tile.smaller()
 
 func start_round():
+	current_player = TEAM.Teams.Player
 	EVENT_HANDLER.player_count = 0
 	EVENT_HANDLER.enemy_count = 0
 	
