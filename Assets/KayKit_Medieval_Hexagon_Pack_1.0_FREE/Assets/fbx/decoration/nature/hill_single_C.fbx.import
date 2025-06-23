@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://s5pw7axv7hrn"
-path="res://.godot/imported/hill_single_C.fbx-ed325b4b5a0774620f3a21d8f777d527.scn"
+path="res://.godot/imported/hill_single_C.fbx-1374bbe013cc7b1c10aaae4f3bbf976f.scn"
 
 [deps]
 
-source_file="res://Assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/decoration/nature/hill_single_C.fbx"
-dest_files=["res://.godot/imported/hill_single_C.fbx-ed325b4b5a0774620f3a21d8f777d527.scn"]
+source_file="res://assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/decoration/nature/hill_single_C.fbx"
+dest_files=["res://.godot/imported/hill_single_C.fbx-1374bbe013cc7b1c10aaae4f3bbf976f.scn"]
 
 [params]
 

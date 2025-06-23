@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cs6egnbbhfrfg"
-path="res://.godot/imported/projectile_catapult.fbx-846e0d5cd29901344c0c08ac8caf1275.scn"
+path="res://.godot/imported/projectile_catapult.fbx-6849a4c81b9125e728129584f8c043e1.scn"
 
 [deps]
 
-source_file="res://Assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/buildings/neutral/projectile_catapult.fbx"
-dest_files=["res://.godot/imported/projectile_catapult.fbx-846e0d5cd29901344c0c08ac8caf1275.scn"]
+source_file="res://assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/buildings/neutral/projectile_catapult.fbx"
+dest_files=["res://.godot/imported/projectile_catapult.fbx-6849a4c81b9125e728129584f8c043e1.scn"]
 
 [params]
 

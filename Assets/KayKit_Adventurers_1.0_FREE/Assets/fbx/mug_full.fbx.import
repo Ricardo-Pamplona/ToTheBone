@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://brdgjdlnfjxo8"
-path="res://.godot/imported/mug_full.fbx-aa74198455f0940384f28916d90067e1.scn"
+path="res://.godot/imported/mug_full.fbx-b4a88bfe168daad676f7dbb07a52883d.scn"
 
 [deps]
 
-source_file="res://Assets/KayKit_Adventurers_1.0_FREE/Assets/fbx/mug_full.fbx"
-dest_files=["res://.godot/imported/mug_full.fbx-aa74198455f0940384f28916d90067e1.scn"]
+source_file="res://assets/KayKit_Adventurers_1.0_FREE/Assets/fbx/mug_full.fbx"
+dest_files=["res://.godot/imported/mug_full.fbx-b4a88bfe168daad676f7dbb07a52883d.scn"]
 
 [params]
 

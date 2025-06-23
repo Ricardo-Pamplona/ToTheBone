@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://du7lws7oeheb5"
-path="res://.godot/imported/Skeleton_Quiver.fbx-0e15d5e2de5b0b6150758ac1e745e736.scn"
+path="res://.godot/imported/Skeleton_Quiver.fbx-6494c300b620f29db6008cc0c648238b.scn"
 
 [deps]
 
-source_file="res://Assets/KayKit_Skeletons_1.0_FREE/assets/fbx/Skeleton_Quiver.fbx"
-dest_files=["res://.godot/imported/Skeleton_Quiver.fbx-0e15d5e2de5b0b6150758ac1e745e736.scn"]
+source_file="res://assets/KayKit_Skeletons_1.0_FREE/assets/fbx/Skeleton_Quiver.fbx"
+dest_files=["res://.godot/imported/Skeleton_Quiver.fbx-6494c300b620f29db6008cc0c648238b.scn"]
 
 [params]
 

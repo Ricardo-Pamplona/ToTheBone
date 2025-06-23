@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cilea47s1lo34"
-path="res://.godot/imported/arrow.fbx-4e618cb5b3425b04b231ab1e506d62d2.scn"
+path="res://.godot/imported/arrow.fbx-d763ec2d2a08857a8aff770d60561e95.scn"
 
 [deps]
 
-source_file="res://Assets/KayKit_Adventurers_1.0_FREE/Assets/fbx/arrow.fbx"
-dest_files=["res://.godot/imported/arrow.fbx-4e618cb5b3425b04b231ab1e506d62d2.scn"]
+source_file="res://assets/KayKit_Adventurers_1.0_FREE/Assets/fbx/arrow.fbx"
+dest_files=["res://.godot/imported/arrow.fbx-d763ec2d2a08857a8aff770d60561e95.scn"]
 
 [params]
 
