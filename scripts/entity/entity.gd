@@ -31,12 +31,12 @@ static func default(team: TEAM.Teams) -> CharacterBody3D:
 	
 	if team == TEAM.Teams.Player:
 		unit.asset_type = "Minion"
-		unit.stats = UNIT_STATS_MAP.get(unit.asset_type, null)
+		unit.stats = UNIT_STATS_MAP.get(unit.asset_type, null).duplicate()
 
 	else:
 		var keys = ENEMY_STATS_MAP.keys()
 		unit.asset_type = keys[randi() % keys.size()]
-		unit.stats = ENEMY_STATS_MAP.get(unit.asset_type, null)
+		unit.stats = ENEMY_STATS_MAP.get(unit.asset_type, null).duplicate()
 
 	unit.team = team
 	return unit
@@ -65,7 +65,7 @@ func take_damage(damage: int) -> bool:
 	return false
 	
 func die():
-	animation_player.play("Death_C_Skeletons")
+	animation_player.play("Death_A")
 
 func hit():
 	animation_player.play("Hit_A")

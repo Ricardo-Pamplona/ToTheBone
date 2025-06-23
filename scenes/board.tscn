@@ -55,5 +55,26 @@ offset_top = 286.0
 offset_right = 511.0
 offset_bottom = 294.0
 
+[node name="VBoxContainer" type="VBoxContainer" parent="VictoryDefeatUI"]
+offset_left = 410.0
+offset_top = 293.0
+offset_right = 608.0
+offset_bottom = 394.0
+
+[node name="AddUnit" type="Button" parent="VictoryDefeatUI/VBoxContainer"]
+layout_mode = 2
+text = "Nova Unidade"
+
+[node name="AddStat" type="Button" parent="VictoryDefeatUI/VBoxContainer"]
+layout_mode = 2
+text = "Aprimorar Uma Unidade"
+
+[node name="SwapUnit" type="Button" parent="VictoryDefeatUI/VBoxContainer"]
+layout_mode = 2
+text = "Evoluir Uma Unidade"
+
 [connection signal="pressed" from="VictoryDefeatUI/Button" to="CameraPosition" method="_on_button_pressed"]
 [connection signal="pressed" from="VictoryDefeatUI/Button" to="VictoryDefeatUI" method="_on_button_pressed"]
+[connection signal="pressed" from="VictoryDefeatUI/VBoxContainer/AddUnit" to="VictoryDefeatUI" method="_on_add_unit_pressed"]
+[connection signal="pressed" from="VictoryDefeatUI/VBoxContainer/AddStat" to="VictoryDefeatUI" method="_on_add_stat_pressed"]
+[connection signal="pressed" from="VictoryDefeatUI/VBoxContainer/SwapUnit" to="VictoryDefeatUI" method="_on_swap_unit_pressed"]

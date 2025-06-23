@@ -41,3 +41,11 @@ func _process(delta: float) -> void:
 	position = lerp(position, move_target, 0.1)
 	rotation_degrees.y = lerp(rotation_degrees.y, rotate_target, 0.1)
 	camera.position.z = lerp(camera.position.z, zoom_target, 0.1)
+
+
+func _on_add_stat_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_swap_unit_pressed() -> void:
+	pass # Replace with function body.

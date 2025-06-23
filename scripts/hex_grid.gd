@@ -4,12 +4,13 @@ const FINDER = preload("res://scripts/utils/finder.gd")
 const TILE_SIZE := 2.0
 const HEX_TILE = preload("res://scenes/hex_tile.tscn")
 const ENEMY = preload("res://scenes/enemies.tscn")
+const UNIT = preload("res://scripts/entity/entity.gd")
 const TEAM = preload("res://scripts/enums/teams.gd")
 const EVENT_HANDLER = preload("res://scripts/tile/event_handler.gd")
 
 
 @export var grid_size := 30
-@export var num_players: int = 1
+@export var num_players: int = 3
 @export var num_enemies: int = 1
 var round : int = 1
 
@@ -47,8 +48,11 @@ static func enemy_attacks_hero(enemy_tile, player_tile):
 	enemy_tile.look_at_closest_enemy()
 	var body = player_tile.body
 	var has_died = body.take_damage(10000)
+	enemy_tile.body.attack()
+	await player_tile.get_tree().create_timer(0.5).timeout
 	if has_died:
 		body.die()
+		await player_tile.get_tree().create_timer(0.5).timeout
 		player_tile.remove_child(body)
 		player_tile.body = null
 		
@@ -130,27 +134,62 @@ func start_round():
 	current_player = TEAM.Teams.Player
 	EVENT_HANDLER.player_count = 0
 	EVENT_HANDLER.enemy_count = 0
-	
+
+	var sobreviventes: Array = []
+
+	for tile in tile_map.values():
+		if tile.body != null and tile.body.team == TEAM.Teams.Player:
+			sobreviventes.append(tile.body)
+
 	for tile in tile_map.values():
 		tile.num_players = num_players
 		tile.num_enemies = num_enemies
+
 		if tile.body:
 			tile.remove_child(tile.body)
-			tile.body.queue_free()
+			if not sobreviventes.has(tile.body):
+				tile.body.queue_free()
 			tile.body = null
-	
+
+	var empty_tiles := tile_map.values().filter(func(t): return t.body == null)
+	empty_tiles.shuffle()
+
 	var players_to_spawn = num_players
 	var enemies_to_spawn = num_enemies
-	var spawned = 0
-	for tile in tile_map.values():
-		if players_to_spawn == 0 and enemies_to_spawn == 0:
-			break
-		elif tile.x % 10 == 0 and tile.y % 20 == 0:
-			if players_to_spawn > 0:
-				players_to_spawn -= spawn_groups(tile, TEAM.Teams.Player, players_to_spawn)
-			elif enemies_to_spawn > 0:
-				enemies_to_spawn -= spawn_groups(tile, TEAM.Teams.Enemy, enemies_to_spawn)
-	
+
+	if not sobreviventes.is_empty() and not empty_tiles.is_empty():
+		var start_tile: StaticBody3D = empty_tiles.pop_back()
+		var survivor = sobreviventes.pop_back()
+		if survivor.get_parent():
+			survivor.get_parent().remove_child(survivor)
+		start_tile.give(survivor)
+		players_to_spawn -= 1
+
+		var neighbors = get_neighbors(start_tile.x, start_tile.y)
+		neighbors.shuffle()
+		for neighbor_pos in neighbors:
+			if sobreviventes.is_empty():
+				break
+			var neighbor_tile = tile_map.get(neighbor_pos)
+			if neighbor_tile and neighbor_tile.body == null:
+				var survivors = sobreviventes.pop_back()
+				if survivors.get_parent():
+					survivors.get_parent().remove_child(survivor)
+				neighbor_tile.give(survivors)
+				players_to_spawn -= 1
+
+	while players_to_spawn > 0 and not empty_tiles.is_empty():
+		var start_tile: StaticBody3D = empty_tiles.pop_back()
+		if start_tile.body == null:
+			var spawned = spawn_groups(start_tile, TEAM.Teams.Player, players_to_spawn)
+			players_to_spawn -= spawned
+
+	while enemies_to_spawn > 0 and not empty_tiles.is_empty():
+		var start_tile: StaticBody3D = empty_tiles.pop_back()
+		if start_tile.body == null:
+			var spawned = spawn_groups(start_tile, TEAM.Teams.Enemy, enemies_to_spawn)
+			enemies_to_spawn -= spawned
+
 func spawn_groups(tile, team, amount) -> int:
 	tile.fill(tile.x, tile.y, team)
 	var spawned = 1
@@ -171,9 +210,57 @@ func spawn_groups(tile, team, amount) -> int:
 
 func next_round():
 	round += 1
-	num_players += 1            
-	num_enemies = round 
+	num_enemies = round
 	start_round()
+
+func swap_minion_por_unidade():
+	var minion_tiles = []
+	for tile in tile_map.values():
+		if tile.body != null and tile.body.team == TEAM.Teams.Player and tile.body.asset_type == "Minion":
+			minion_tiles.append(tile)
+
+	if minion_tiles.is_empty():
+		return
+
+	var tile_aleatorio = minion_tiles[randi() % minion_tiles.size()]
+	var opcoes = ["Mage", "Rogue", "Warrior"]
+	var nova_unidade_tipo = opcoes[randi() % opcoes.size()]
+
+	var body_to_remove = tile_aleatorio.body
+	tile_aleatorio.body = null
+	tile_aleatorio.remove_child(body_to_remove)
+	body_to_remove.queue_free()
+
+	var nova_unidade_scene = preload("res://scenes/entity.tscn")
+	var nova_unidade = nova_unidade_scene.instantiate()
+	nova_unidade.asset_type = nova_unidade_tipo
+	nova_unidade.stats = UNIT.UNIT_STATS_MAP[nova_unidade_tipo].duplicate()
+	nova_unidade.team = TEAM.Teams.Player
+
+	tile_aleatorio.give(nova_unidade)
+	print("Minion trocado por", nova_unidade_tipo)
+
+
+func add_stat_aleatorio():
+	var player_units = []
+	for tile in tile_map.values():
+		if tile.body != null and tile.body.team == TEAM.Teams.Player:
+			player_units.append(tile.body)
+
+	if player_units.is_empty():
+		return
+
+	var unidade = player_units[randi() % player_units.size()]
+
+	var stats_lista = ["health", "strength", "speed", "range"]
+	var stat_aleatorio = stats_lista[randi() % stats_lista.size()]
+
+	if stat_aleatorio in unidade.stats:
+		unidade.stats[stat_aleatorio] += 1
+		unidade.rotation_degrees.y += 30 
+	else:
+		print("Stat não encontrado:", stat_aleatorio)
+
 
 func _generate_grid():
 	for x in range(grid_size):

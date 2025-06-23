@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cdbr8tux28x3b"
-path="res://.godot/imported/hex_river_K_waterless.fbx-6a884b36822a58bdbcd6282631ef7fac.scn"
+path="res://.godot/imported/hex_river_K_waterless.fbx-aa5a67cffc49efed6cebe496ac0f3a02.scn"
 
 [deps]
 
-source_file="res://Assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/tiles/rivers/waterless/hex_river_K_waterless.fbx"
-dest_files=["res://.godot/imported/hex_river_K_waterless.fbx-6a884b36822a58bdbcd6282631ef7fac.scn"]
+source_file="res://assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/tiles/rivers/waterless/hex_river_K_waterless.fbx"
+dest_files=["res://.godot/imported/hex_river_K_waterless.fbx-aa5a67cffc49efed6cebe496ac0f3a02.scn"]
 
 [params]
 

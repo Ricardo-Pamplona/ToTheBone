@@ -1,13 +1,25 @@
 [gd_scene load_steps=4 format=3 uid="uid://f1e17tbjpjj5"]
 
-[ext_resource type="Script" uid="uid://bsdu3e3c3tnlr" path="res://scripts/enemies.gd" id="1_y16gg"]
 [ext_resource type="Resource" uid="uid://dnld4of6bc6xa" path="res://resources/enemies/barbarian.tres" id="2_q4yn1"]
+
+[sub_resource type="GDScript" id="GDScript_y16gg"]
+script/source = "extends CharacterBody3D
+
+@export var enemy_stats : Resource
+
+func build(model: PackedScene, health: float, strength: float, speed: int, range: float):
+	enemy_stats.model = model
+	enemy_stats.health = health
+	enemy_stats.strength = strength
+	enemy_stats.speed = speed
+	enemy_stats.range = range
+"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y16gg"]
 height = 2.5
 
 [node name="Enemies" type="CharacterBody3D"]
-script = ExtResource("1_y16gg")
+script = SubResource("GDScript_y16gg")
 enemy_stats = ExtResource("2_q4yn1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

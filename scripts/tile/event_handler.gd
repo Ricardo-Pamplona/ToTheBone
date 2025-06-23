@@ -77,7 +77,7 @@ func attack():
 	first_clicked_tile.look_at_closest_enemy()
 	first_clicked_tile.body.attack() 
 	await get_tree().create_timer(0.5).timeout
-	var has_died = body.take_damage(1000)
+	var has_died = body.take_damage(first_clicked_tile.body.stats.strength)
 	if has_died:
 		body.die()
 		await get_tree().create_timer(1).timeout
@@ -131,6 +131,7 @@ func bigger():
 func give(body: CharacterBody3D) -> void:
 	self.body = body
 	add_child(body)
+	body.global_transform.origin = self.global_transform.origin
 	
 func take() -> CharacterBody3D:
 	var b := body
@@ -166,19 +167,25 @@ func reset_counts():
 func check_victory_conditions():
 	var has_player := false
 	var has_enemy := false
-	
+	var vivos := 0
+
 	for tile in HEX_GRID.tile_map.values():
 		if tile.body == null:
 			continue
 		if tile.body.team == TEAM.Teams.Player:
 			has_player = true
+			vivos += 1
 		elif tile.body.team == TEAM.Teams.Enemy:
 			has_enemy = true
-	
+
 	if not has_enemy:
+		var hex_grid = get_tree().root.get_node("Board/HexGrid")
+		hex_grid.num_players = vivos
+		print("Vitória! Jogadores sobreviventes:", vivos)
 		show_victory_screen()
 	elif not has_player:
 		show_defeat_screen()
+
 
 func show_victory_screen():
 	var hex_grid = get_tree().root.get_node("Board/HexGrid")

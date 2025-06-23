@@ -1,13 +1,35 @@
 [gd_scene load_steps=4 format=3 uid="uid://cc4qxjocow2lb"]
 
-[ext_resource type="Script" uid="uid://dfqfp2lmeo6tj" path="res://scripts/unit.gd" id="1_k673f"]
-[ext_resource type="PackedScene" uid="uid://byb8jlirl0gp1" path="res://Assets/KayKit_Skeletons_1.0_FREE/characters/fbx/Skeleton_Minion.fbx" id="1_o7ajc"]
+[ext_resource type="PackedScene" uid="uid://byb8jlirl0gp1" path="res://assets/KayKit_Skeletons_1.0_FREE/characters/fbx/Skeleton_Minion.fbx" id="1_o7ajc"]
+
+[sub_resource type="GDScript" id="GDScript_o7ajc"]
+script/source = "extends CharacterBody3D
+
+const UNIT = preload(\"res://scenes/unit.tscn\")
+const TEAM = preload(\"res://scripts/enums/teams.gd\")
+
+@onready var animation_player : AnimationPlayer = $unit/AnimationPlayer
+@export var stats: UnitStats = UnitStats.new()
+@export var team: TEAM.Teams
+
+static func default(team: TEAM.Teams) -> CharacterBody3D:
+	var unit := UNIT.instantiate()
+	unit.stats = UnitStats.default()
+	unit.team = team
+	return unit
+
+func take_damage(damage: int) -> bool:
+	if damage >= stats.health:
+		return true
+	stats.health -= damage 
+	return false
+"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k673f"]
 height = 2.5
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
-script = ExtResource("1_k673f")
+script = SubResource("GDScript_o7ajc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.999823, 0.018831, 0, -0.018831, 0.999823, 0, 1.06209, 0)
