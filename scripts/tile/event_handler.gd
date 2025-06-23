@@ -2,7 +2,6 @@ extends StaticBody3D
 
 const HEX_GRID = preload("res://scripts/hex_grid.gd")
 const FINDER = preload("res://scripts/utils/finder.gd")
-#const UNIT = preload("res://scripts/unit.gd")
 const UNIT = preload("res://scripts/entity/entity.gd")
 const ENEMY = preload("res://scenes/enemies.tscn")
 const TEAM = preload("res://scripts/enums/teams.gd")
@@ -25,6 +24,12 @@ static var enemy_count := 0
 
 func can_be_used_in_path() -> bool:
 	if body == null:
+		return true
+	
+	if first_clicked_tile == null:
+		return true
+		
+	if first_clicked_tile.body == null:
 		return true
 	
 	if body.team == first_clicked_tile.body.team:
@@ -102,7 +107,6 @@ func move():
 	first_clicked_tile = null
 	self.bigger()
 	HEX_GRID.erase()
-	look_at_closest_enemy()
 	last_x = -1
 	last_y = -1
 
@@ -180,7 +184,6 @@ func show_victory_screen():
 	var hex_grid = get_tree().root.get_node("Board/HexGrid")
 	var ui = get_tree().root.get_node("Board/VictoryDefeatUI")
 	ui.call("show_victory", func(): hex_grid.next_round())
-
 
 func show_defeat_screen():
 	var ui = get_tree().root.get_node("Board/VictoryDefeatUI")

@@ -26,15 +26,47 @@ func _ready() -> void:
 static func change_player():
 	if current_player == TEAM.Teams.Player:
 		current_player = TEAM.Teams.Enemy
-		print("ENEMY's Turn")
+		var result = get_closest_enemy_hero_pair()
+		var distance = result.distance
+		if distance > 2:
+			var limit = result.limit 
+			
+			if limit >= distance:
+				limit = distance - 1
+			
+			move(result.enemy_pos.x, result.enemy_pos.y, result.hero_pos.x, result.hero_pos.y, limit)
+		else:
+			attack(tile_map.get(result.enemy_pos), tile_map.get(result.hero_pos))
 	else:
 		current_player = TEAM.Teams.Player
-		print("PLAYER's Turn")
+
+static func attack(enemy_tile, player_tile):
+	enemy_tile.look_at_closest_enemy()
+	enemy_tile.body.attack() 
+	await enemy_tile.get_tree().create_timer(0.5).timeout
+	var body = player_tile.body
+	var has_died = body.take_damage(10000)
+	if has_died:
+		body.die()
+		await player_tile.get_tree().create_timer(1).timeout
+		player_tile.remove_child(body)
+		body = null
+		
+		enemy_tile.check_victory_conditions()
+	else:
+		body.hit()
+		await player_tile.get_tree().create_timer(1).timeout
+
+	change_player()
+	erase()
 
 static func move(x1: int, y1: int, x2: int, y2: int, limit: int) -> void:
 	var path = FINDER.build_path(Vector2i(x1, y1), Vector2i(x2, y2), tile_map, limit)
 
 	var origin_mob = tile_map.get(path[0])
+	
+	origin_mob.look_at_closest_enemy()
+	
 	var destination_mob = tile_map.get(path[path.size() - 1])
 
 	var body = origin_mob.take()  
@@ -42,12 +74,44 @@ static func move(x1: int, y1: int, x2: int, y2: int, limit: int) -> void:
 	
 	change_player()
 
+static func get_closest_enemy_hero_pair() -> Dictionary:
+	var best_enemy_pos: Vector2i
+	var best_hero_pos: Vector2i
+	var shortest_path_length := INF
+	var limit: int
+	
+	for enemy_tile_pos in tile_map:
+		var enemy_tile = tile_map[enemy_tile_pos]
+
+		if enemy_tile.body == null or enemy_tile.body.team != TEAM.Teams.Enemy:
+			continue
+
+		limit = enemy_tile.body.stats.speed
+
+		for hero_tile_pos in tile_map:
+			var hero_tile = tile_map[hero_tile_pos]
+
+			if hero_tile.body == null or hero_tile.body.team != TEAM.Teams.Player:
+				continue
+
+			var path = FINDER.build_path(enemy_tile_pos, hero_tile_pos, tile_map, limit)
+			if path.size() > 0 and path.size() < shortest_path_length:
+				shortest_path_length = path.size()
+				best_enemy_pos = enemy_tile_pos
+				best_hero_pos = hero_tile_pos
+
+	return {
+		"enemy_pos": best_enemy_pos,
+		"hero_pos": best_hero_pos,
+		"distance": shortest_path_length,
+		"limit": limit
+	}
+
 static func erase() -> void:
 	for tile_pos in tile_map:
 		var tile = tile_map.get(tile_pos)
 		if tile:
 			tile.bigger()
-
 
 static func draw(x1: int, y1: int, x2: int, y2: int, limit: int) -> void:
 	erase()
@@ -77,12 +141,28 @@ func start_round():
 		if players_to_spawn == 0 and enemies_to_spawn == 0:
 			break
 		elif tile.x % 10 == 0 and tile.y % 10 == 0:
-			if enemies_to_spawn > 0:
-				tile.fill(tile.x, tile.y, TEAM.Teams.Player)
-				enemies_to_spawn -= 1
-			elif num_players > 0:
-				tile.fill(tile.x, tile.y, TEAM.Teams.Enemy)
-				players_to_spawn -= 1
+			if players_to_spawn > 0:
+				players_to_spawn -= spawn_groups(tile, TEAM.Teams.Player, players_to_spawn)
+			elif enemies_to_spawn > 0:
+				enemies_to_spawn -= spawn_groups(tile, TEAM.Teams.Enemy, enemies_to_spawn)
+	
+func spawn_groups(tile, team, amount) -> int:
+	tile.fill(tile.x, tile.y, team)
+	var spawned = 1
+	if spawned == amount:
+		return spawned
+	
+	var neighbors = get_neighbors(tile.x, tile.y)
+	neighbors.shuffle()
+	for neighbor in neighbors:
+		if spawned == amount:
+			return spawned
+		var tile_neighbor = tile_map.get(neighbor)
+		if tile_neighbor != null and tile_neighbor.body == null:
+			tile_neighbor.fill(tile_neighbor.x, tile_neighbor.y, team)
+			spawned += 1
+	
+	return spawned
 
 func next_round():
 	round += 1
@@ -102,3 +182,32 @@ func _generate_grid():
 			tile.translate(Vector3(tile_coordinates.x, 0, tile_coordinates.y))
 			tile_map[Vector2i(x, y)] = tile
 			tile_coordinates.y += TILE_SIZE
+
+func get_neighbors(x: int, y: int) -> Array:
+	var directions: Array
+
+	if x % 2 == 0:
+		directions = [
+			Vector2i(+1,  0),   
+			Vector2i( 0, -1),   
+			Vector2i(-1, -1),   
+			Vector2i(-1,  0),   
+			Vector2i(-1, +1),   
+			Vector2i( 0, +1),   
+		]
+	else:
+		directions = [
+			Vector2i(+1,  0),   
+			Vector2i(+1, -1),   
+			Vector2i( 0, -1),   
+			Vector2i(-1,  0),   
+			Vector2i(+1, +1),   
+			Vector2i( 0, +1),   
+		]
+
+	var neighbors: Array = []
+	for offset in directions:
+		var nx = x + offset.x
+		var ny = y + offset.y
+		neighbors.append(Vector2i(nx, ny))
+	return neighbors
