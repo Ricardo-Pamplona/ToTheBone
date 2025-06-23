@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://dq6nxpq73a4"]
 
 [ext_resource type="Script" uid="uid://tdridcfyhy6m" path="res://scripts/hex_grid.gd" id="1_bw3vb"]
-[ext_resource type="Script" uid="uid://3wui6a0xrky1" path="res://assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/tiles/rivers/camera_position.gd" id="1_tx6nw"]
+[ext_resource type="Script" uid="uid://3wui6a0xrky1" path="res://Assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/tiles/rivers/camera_position.gd" id="1_tx6nw"]
 [ext_resource type="Script" uid="uid://chk80xwwlxucr" path="res://scripts/victory_defeart_ui.gd" id="3_nglv8"]
-[ext_resource type="Texture2D" uid="uid://bi5k7uc51e0ew" path="res://assets/kenney_ui-pack-adventure/PNG/Default/panel_brown_arrows_dark_detail.png" id="4_dxjtj"]
+[ext_resource type="Texture2D" uid="uid://bi5k7uc51e0ew" path="res://Assets/assets/kenney_ui-pack-adventure/PNG/Default/panel_brown_arrows_dark_detail.png" id="4_dxjtj"]
 [ext_resource type="FontFile" uid="uid://dp8t70s0irgi6" path="res://Peaberry-Font-v2.0/PeaberryBase.ttf" id="4_fv4ni"]
 [ext_resource type="Script" uid="uid://dxvw5a1xwep4f" path="res://scripts/hud.gd" id="6_dun80"]
 

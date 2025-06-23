@@ -56,6 +56,7 @@ static func change_player():
 static func enemy_attacks_hero(enemy_tile, player_tile):
 	if not enemy_tile.has_clear_line_to(player_tile):
 		print("Inimigo não pode atacar: obstáculo no caminho.")
+		move(enemy_tile.x, enemy_tile.y, player_tile.x, player_tile.y, enemy_tile.body.stats.speed)
 		change_player()
 		erase()
 		return

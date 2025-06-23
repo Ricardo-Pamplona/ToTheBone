@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cc4qxjocow2lb"]
 
-[ext_resource type="PackedScene" uid="uid://byb8jlirl0gp1" path="res://assets/KayKit_Skeletons_1.0_FREE/characters/fbx/Skeleton_Minion.fbx" id="1_o7ajc"]
+[ext_resource type="PackedScene" uid="uid://byb8jlirl0gp1" path="res://Assets/KayKit_Skeletons_1.0_FREE/characters/fbx/Skeleton_Minion.fbx" id="1_o7ajc"]
 
 [sub_resource type="GDScript" id="GDScript_o7ajc"]
 script/source = "extends CharacterBody3D

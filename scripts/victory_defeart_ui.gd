@@ -25,6 +25,10 @@ func show_victory(callback: Callable):
 	
 
 func show_defeat():
+	$VBoxContainer/AddStat.hide()
+	$VBoxContainer/AddUnit.hide()
+	$VBoxContainer/SwapUnit.hide()
+	button.show()
 	label.text = "Derrota!"
 	is_victory = false 
 	button.text = "Voltar"
