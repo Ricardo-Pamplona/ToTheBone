@@ -1,5 +1,6 @@
 extends CharacterBody3D
 
+
 const TEAM = preload("res://scripts/enums/teams.gd")
 
 const ENEMY_STATS_MAP = {
