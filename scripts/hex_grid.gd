@@ -28,9 +28,10 @@ static func change_player():
 		current_player = TEAM.Teams.Enemy
 		var result = get_closest_enemy_hero_pair()
 		var distance = result.distance
-		var enemy = tile_map.get(result.enemy_pos)
-		print(enemy.body.stats.range + 1)
-		if distance > enemy.body.stats.range + 1:
+		var enemy = tile_map.get(result.enemy_pos).body
+		if enemy == null:
+			return
+		if distance > enemy.stats.range + 1:
 			var limit = result.limit 
 			
 			if limit >= distance:

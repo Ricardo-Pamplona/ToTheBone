@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://mdj8v568bsff"
-path="res://.godot/imported/fence_wood_straight.fbx-7adce8c741e3a080d1a23190581263ec.scn"
+path="res://.godot/imported/fence_wood_straight.fbx-08e562f6e3fb64fd39cb09d0fa705fbd.scn"
 
 [deps]
 
-source_file="res://assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/buildings/neutral/fence_wood_straight.fbx"
-dest_files=["res://.godot/imported/fence_wood_straight.fbx-7adce8c741e3a080d1a23190581263ec.scn"]
+source_file="res://Assets/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/fbx/buildings/neutral/fence_wood_straight.fbx"
+dest_files=["res://.godot/imported/fence_wood_straight.fbx-08e562f6e3fb64fd39cb09d0fa705fbd.scn"]
 
 [params]
 
