@@ -1,7 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://ce3tj3pomknc"]
+[gd_scene load_steps=6 format=3 uid="uid://ce3tj3pomknc"]
 
 [ext_resource type="Script" uid="uid://dt84evfrfy8n6" path="res://scripts/menu.gd" id="1_yqeox"]
+[ext_resource type="Texture2D" uid="uid://bi5k7uc51e0ew" path="res://assets/kenney_ui-pack-adventure/PNG/Default/panel_brown_arrows_dark_detail.png" id="2_con2f"]
 [ext_resource type="FontFile" uid="uid://dp8t70s0irgi6" path="res://Peaberry-Font-v2.0/PeaberryBase.ttf" id="2_vjb58"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mhnvy"]
+texture = ExtResource("2_con2f")
+texture_margin_left = 30.0
+texture_margin_top = 30.0
+texture_margin_right = 30.0
+texture_margin_bottom = 30.0
+
+[sub_resource type="Theme" id="Theme_4ytvr"]
+Panel/styles/panel = SubResource("StyleBoxTexture_mhnvy")
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -20,6 +31,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.280038, 0.495665, 1, 1)
+
+[node name="PanelC" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -247.0
+offset_top = -188.0
+offset_right = 247.0
+offset_bottom = 139.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_4ytvr")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 2
